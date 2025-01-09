@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
 ///   ),
 /// )
 /// ```
-class ScaleYTransition extends AnimatedWidget {
+final class ScaleYTransition extends AnimatedWidget {
   /// Creates a vertical scale transition.
   ///
   /// The [scaleY] animation must not be null. If [alignment] is null,
