@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/src/decorate/decorate.dart';
+import 'package:new_loading_indicator/src/decorate/decorate.dart';
 
 mixin IndicatorController<T extends StatefulWidget> on State<T> {
   bool isPaused = false;

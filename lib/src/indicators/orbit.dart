@@ -1,12 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/src/indicators/base/indicator_controller.dart';
-import 'package:loading_indicator/src/shape/indicator_painter.dart';
+import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
+import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
 /// Orbit.
 class Orbit extends StatefulWidget {
-  const Orbit({Key? key}) : super(key: key);
+  const Orbit({super.key});
 
   @override
   State<Orbit> createState() => _OrbitState();

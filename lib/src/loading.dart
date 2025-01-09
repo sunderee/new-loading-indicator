@@ -1,4 +1,4 @@
-library loading;
+library;
 
 import 'package:flutter/material.dart';
 
@@ -94,14 +94,14 @@ class LoadingIndicator extends StatelessWidget {
   final bool pause;
 
   const LoadingIndicator({
-    Key? key,
+    super.key,
     required this.indicatorType,
     this.colors,
     this.backgroundColor,
     this.strokeWidth,
     this.pathBackgroundColor,
     this.pause = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +131,7 @@ class LoadingIndicator extends StatelessWidget {
   }
 
   /// return the animation indicator.
-  _buildIndicator() {
+  Widget _buildIndicator() {
     switch (indicatorType) {
       case Indicator.ballPulse:
         return const BallPulse();
@@ -201,8 +201,6 @@ class LoadingIndicator extends StatelessWidget {
         return const AudioEqualizer();
       case Indicator.circleStrokeSpin:
         return const CircleStrokeSpin();
-      default:
-        throw Exception("no related indicator type:$indicatorType found");
     }
   }
 }

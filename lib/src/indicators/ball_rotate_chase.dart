@@ -1,12 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/src/indicators/base/indicator_controller.dart';
-import 'package:loading_indicator/src/shape/indicator_painter.dart';
+import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
+import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
 /// BallRotateChase.
 class BallRotateChase extends StatefulWidget {
-  const BallRotateChase({Key? key}) : super(key: key);
+  const BallRotateChase({super.key});
 
   @override
   State<BallRotateChase> createState() => _BallRotateChaseState();

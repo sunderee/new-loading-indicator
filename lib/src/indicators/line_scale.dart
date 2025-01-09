@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/src/indicators/base/indicator_controller.dart';
-import 'package:loading_indicator/src/shape/indicator_painter.dart';
+import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
+import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
 /// LineScale.
 class LineScale extends StatefulWidget {
-  const LineScale({Key? key}) : super(key: key);
+  const LineScale({super.key});
 
   @override
   State<LineScale> createState() => _LineScaleState();

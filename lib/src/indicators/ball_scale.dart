@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/src/indicators/base/indicator_controller.dart';
-import 'package:loading_indicator/src/shape/indicator_painter.dart';
+import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
+import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
 /// BallScale.
 class BallScale extends StatefulWidget {
-  const BallScale({Key? key}) : super(key: key);
+  const BallScale({super.key});
 
   @override
   State<BallScale> createState() => _BallScaleState();

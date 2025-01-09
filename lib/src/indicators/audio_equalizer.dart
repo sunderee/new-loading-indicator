@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/src/indicators/base/indicator_controller.dart';
-import 'package:loading_indicator/src/shape/indicator_painter.dart';
+import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
+import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
 /// AudioEqualizer
 class AudioEqualizer extends StatefulWidget {
-  const AudioEqualizer({Key? key}) : super(key: key);
+  const AudioEqualizer({super.key});
 
   @override
   State<AudioEqualizer> createState() => _AudioEqualizerState();

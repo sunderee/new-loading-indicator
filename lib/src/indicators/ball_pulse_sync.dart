@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/src/indicators/base/indicator_controller.dart';
-import 'package:loading_indicator/src/shape/indicator_painter.dart';
+import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
+import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
 /// BallPulseSync.
 class BallPulseSync extends StatefulWidget {
-  const BallPulseSync({Key? key}) : super(key: key);
+  const BallPulseSync({super.key});
 
   @override
   State<BallPulseSync> createState() => _BallPulseSyncState();
