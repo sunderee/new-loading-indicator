@@ -3,27 +3,54 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:new_loading_indicator/src/decorate/decorate.dart';
 
+/// The minimum size in logical pixels for any indicator.
 const double _kMinIndicatorSize = 36.0;
 
-/// Basic shape.
+/// Defines the basic shapes available for loading indicators.
+/// These shapes serve as building blocks for more complex loading animations.
 enum Shape {
+  /// A filled circle shape
   circle,
+
+  /// A three-quarter ring shape (spans 270 degrees)
   ringThirdFour,
+
+  /// A rectangular shape
   rectangle,
+
+  /// A ring split into two vertical halves
   ringTwoHalfVertical,
+
+  /// A complete ring shape
   ring,
+
+  /// A line shape with rounded ends
   line,
+
+  /// A triangular shape
   triangle,
+
+  /// An arc shape that requires additional data parameter
   arc,
+
+  /// A semi-circular shape
   circleSemi,
 }
 
-/// Wrapper class for basic shape.
+/// A widget that renders basic shapes used in loading indicators.
+///
+/// This widget serves as a wrapper for the [_ShapePainter] and handles the rendering
+/// of various basic shapes defined in the [Shape] enum. It uses [CustomPaint] to
+/// draw the shapes and supports customization through colors and dimensions.
 class IndicatorShapeWidget extends StatelessWidget {
+  /// The type of shape to render
   final Shape shape;
+
+  /// Additional data required for certain shapes (e.g., arc angle)
   final double? data;
 
-  /// The index of shape in the widget.
+  /// The index of this shape when multiple shapes are used in an indicator.
+  /// Used for color cycling in multi-shape indicators.
   final int index;
 
   const IndicatorShapeWidget({
@@ -56,6 +83,13 @@ class IndicatorShapeWidget extends StatelessWidget {
   }
 }
 
+/// A custom painter that handles the actual drawing of indicator shapes.
+///
+/// This painter supports various shape types and customization options including:
+/// - Different shape types defined in [Shape] enum
+/// - Custom colors and stroke widths
+/// - Background paths for certain shapes
+/// - Shape-specific data parameters
 class _ShapePainter extends CustomPainter {
   final Color color;
   final Shape shape;
