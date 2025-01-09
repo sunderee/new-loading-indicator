@@ -42,7 +42,7 @@ enum Shape {
 /// This widget serves as a wrapper for the [_ShapePainter] and handles the rendering
 /// of various basic shapes defined in the [Shape] enum. It uses [CustomPaint] to
 /// draw the shapes and supports customization through colors and dimensions.
-class IndicatorShapeWidget extends StatelessWidget {
+final class IndicatorShapeWidget extends StatelessWidget {
   /// The type of shape to render
   final Shape shape;
 
@@ -90,7 +90,7 @@ class IndicatorShapeWidget extends StatelessWidget {
 /// - Custom colors and stroke widths
 /// - Background paths for certain shapes
 /// - Shape-specific data parameters
-class _ShapePainter extends CustomPainter {
+final class _ShapePainter extends CustomPainter {
   final Color color;
   final Shape shape;
   final Paint _paint;
