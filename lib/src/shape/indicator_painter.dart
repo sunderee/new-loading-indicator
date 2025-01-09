@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/src/decorate/decorate.dart';
+import 'package:new_loading_indicator/src/decorate/decorate.dart';
 
 const double _kMinIndicatorSize = 36.0;
 
@@ -27,11 +27,11 @@ class IndicatorShapeWidget extends StatelessWidget {
   final int index;
 
   const IndicatorShapeWidget({
-    Key? key,
+    super.key,
     required this.shape,
     this.data,
     this.index = 0,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

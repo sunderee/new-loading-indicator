@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/src/indicators/base/indicator_controller.dart';
-import 'package:loading_indicator/src/shape/indicator_painter.dart';
+import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
+import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
 /// BallTrianglePath.
 class BallTrianglePath extends StatefulWidget {
-  const BallTrianglePath({Key? key}) : super(key: key);
+  const BallTrianglePath({super.key});
 
   @override
   State<BallTrianglePath> createState() => _BallTrianglePathState();
@@ -100,7 +100,7 @@ class _BallTrianglePathState extends State<BallTrianglePath>
     );
   }
 
-  _buildAnimatedRing(
+  AnimatedBuilder _buildAnimatedRing(
     Size size,
     double circleSize,
     Animation<Offset> animation,

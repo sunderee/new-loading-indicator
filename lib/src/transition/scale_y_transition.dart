@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 /// Animates the y axis scale of a transformed widget.
 class ScaleYTransition extends AnimatedWidget {
   const ScaleYTransition({
-    Key? key,
+    super.key,
     required Animation<double> scaleY,
     this.alignment = Alignment.center,
     this.child,
-  }) : super(key: key, listenable: scaleY);
+  }) : super(listenable: scaleY);
 
   Animation<double> get scaleY => listenable as Animation<double>;
 

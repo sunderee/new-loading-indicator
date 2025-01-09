@@ -1,12 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/src/indicators/base/indicator_controller.dart';
-import 'package:loading_indicator/src/shape/indicator_painter.dart';
+import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
+import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
 /// BallSpinFadeLoader.
 class BallSpinFadeLoader extends StatefulWidget {
-  const BallSpinFadeLoader({Key? key}) : super(key: key);
+  const BallSpinFadeLoader({super.key});
 
   @override
   State<BallSpinFadeLoader> createState() => _BallSpinFadeLoaderState();

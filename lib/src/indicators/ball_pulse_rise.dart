@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/src/indicators/base/indicator_controller.dart';
-import 'package:loading_indicator/src/shape/indicator_painter.dart';
+import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
+import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
 /// BallPulseRise.
 class BallPulseRise extends StatefulWidget {
-  const BallPulseRise({Key? key}) : super(key: key);
+  const BallPulseRise({super.key});
 
   @override
   State<BallPulseRise> createState() => _BallPulseRiseState();
@@ -82,7 +82,7 @@ class _BallPulseRiseState extends State<BallPulseRise>
     );
   }
 
-  _buildSingleCircle(int index, double deltaY) {
+  AnimatedBuilder _buildSingleCircle(int index, double deltaY) {
     return AnimatedBuilder(
       animation: _animationController,
       builder: (_, child) {

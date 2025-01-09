@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/src/indicators/base/indicator_controller.dart';
-import 'package:loading_indicator/src/shape/indicator_painter.dart';
+import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
+import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
 /// BallGridPulse.
 class BallGridPulse extends StatefulWidget {
-  const BallGridPulse({Key? key}) : super(key: key);
+  const BallGridPulse({super.key});
 
   @override
   State<BallGridPulse> createState() => _BallGridPulseState();

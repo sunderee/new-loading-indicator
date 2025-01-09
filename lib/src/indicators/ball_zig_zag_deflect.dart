@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/src/indicators/base/indicator_controller.dart';
-import 'package:loading_indicator/src/shape/indicator_painter.dart';
+import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
+import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
 /// BallZigZagDeflect.
 class BallZigZagDeflect extends StatefulWidget {
-  const BallZigZagDeflect({Key? key}) : super(key: key);
+  const BallZigZagDeflect({super.key});
 
   @override
   State<BallZigZagDeflect> createState() => _BallZigZagDeflectState();

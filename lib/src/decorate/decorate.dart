@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/loading_indicator.dart';
+import 'package:new_loading_indicator/new_loading_indicator.dart';
 
 const double _kDefaultStrokeWidth = 2;
 
@@ -32,7 +32,8 @@ class DecorateData {
 
   double get strokeWidth => _strokeWidth ?? _kDefaultStrokeWidth;
 
-  Function get _deepEq => const DeepCollectionEquality().equals;
+  bool Function(Object? e1, Object? e2) get _deepEq =>
+      const DeepCollectionEquality().equals;
 
   @override
   bool operator ==(Object other) =>
@@ -66,10 +67,10 @@ class DecorateContext extends InheritedWidget {
   final DecorateData decorateData;
 
   const DecorateContext({
-    Key? key,
+    super.key,
     required this.decorateData,
-    required Widget child,
-  }) : super(key: key, child: child);
+    required super.child,
+  });
 
   @override
   bool updateShouldNotify(DecorateContext oldWidget) =>

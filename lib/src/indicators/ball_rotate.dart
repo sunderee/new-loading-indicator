@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/src/indicators/base/indicator_controller.dart';
-import 'package:loading_indicator/src/shape/indicator_painter.dart';
+import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
+import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
 /// BallRotate.
 class BallRotate extends StatefulWidget {
-  const BallRotate({Key? key}) : super(key: key);
+  const BallRotate({super.key});
 
   @override
   State<BallRotate> createState() => _BallRotateState();
@@ -56,7 +56,7 @@ class _BallRotateState extends State<BallRotate>
     );
   }
 
-  _buildSingleCircle(
+  Opacity _buildSingleCircle(
     double opacity,
     int index,
   ) {

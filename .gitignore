@@ -1,14 +1,28 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
 .DS_Store
-.dart_tool/
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
 
-.packages
-.pub/
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
 
-build/
-ios/.generated/
-ios/Flutter/Generated.xcconfig
-ios/Runner/GeneratedPluginRegistrant.*
+# VSCode related
+#.vscode/
+
+# Flutter/Dart/Pub related
 /pubspec.lock
-loading.iml
-.metadata
-.idea
+**/doc/api/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/

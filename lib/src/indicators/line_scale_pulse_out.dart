@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:loading_indicator/src/indicators/base/indicator_controller.dart';
-import 'package:loading_indicator/src/shape/indicator_painter.dart';
+import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
+import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
 /// LineScalePulseOut.
 class LineScalePulseOut extends StatefulWidget {
-  const LineScalePulseOut({Key? key}) : super(key: key);
+  const LineScalePulseOut({super.key});
 
   @override
   State<LineScalePulseOut> createState() => _LineScalePulseOutState();
