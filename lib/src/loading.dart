@@ -1,5 +1,3 @@
-library;
-
 import 'package:flutter/material.dart';
 
 import 'decorate/decorate.dart';
@@ -37,7 +35,7 @@ import 'indicators/semi_circle_spin.dart';
 import 'indicators/square_spin.dart';
 import 'indicators/triangle_skew_spin.dart';
 
-///34 different types animation enums.
+/// Enumerates 34 different animation types available in the library.
 enum Indicator {
   ballPulse,
   ballGridPulse,
@@ -75,22 +73,24 @@ enum Indicator {
   circleStrokeSpin,
 }
 
-/// Entrance of the loading.
-class LoadingIndicator extends StatelessWidget {
-  /// Indicate which type.
+/// A widget that displays various loading animations.
+final class LoadingIndicator extends StatelessWidget {
+  /// The type of loading animation to display.
   final Indicator indicatorType;
 
-  /// The color you draw on the shape.
+  /// The colors used to draw the shape. If not provided, uses the primary color from the current theme.
   final List<Color>? colors;
+
+  /// The background color of the container. Defaults to transparent.
   final Color? backgroundColor;
 
-  /// The stroke width of line.
+  /// The stroke width of lines in the animation.
   final double? strokeWidth;
 
-  /// Applicable to which has cut edge of the shape
+  /// The background color for shapes with cut edges.
   final Color? pathBackgroundColor;
 
-  /// Animation status, true will pause the animation, default is false
+  /// Controls the animation state. When true, the animation is paused. Defaults to false.
   final bool pause;
 
   const LoadingIndicator({
@@ -130,77 +130,42 @@ class LoadingIndicator extends StatelessWidget {
     );
   }
 
-  /// return the animation indicator.
-  Widget _buildIndicator() {
-    switch (indicatorType) {
-      case Indicator.ballPulse:
-        return const BallPulse();
-      case Indicator.ballGridPulse:
-        return const BallGridPulse();
-      case Indicator.ballClipRotate:
-        return const BallClipRotate();
-      case Indicator.squareSpin:
-        return const SquareSpin();
-      case Indicator.ballClipRotatePulse:
-        return const BallClipRotatePulse();
-      case Indicator.ballClipRotateMultiple:
-        return const BallClipRotateMultiple();
-      case Indicator.ballPulseRise:
-        return const BallPulseRise();
-      case Indicator.ballRotate:
-        return const BallRotate();
-      case Indicator.cubeTransition:
-        return const CubeTransition();
-      case Indicator.ballZigZag:
-        return const BallZigZag();
-      case Indicator.ballZigZagDeflect:
-        return const BallZigZagDeflect();
-      case Indicator.ballTrianglePath:
-        return const BallTrianglePath();
-      case Indicator.ballTrianglePathColored:
-        return const BallTrianglePathColored();
-      case Indicator.ballTrianglePathColoredFilled:
-        return const BallTrianglePathColored(isFilled: true);
-      case Indicator.ballScale:
-        return const BallScale();
-      case Indicator.lineScale:
-        return const LineScale();
-      case Indicator.lineScaleParty:
-        return const LineScaleParty();
-      case Indicator.ballScaleMultiple:
-        return const BallScaleMultiple();
-      case Indicator.ballPulseSync:
-        return const BallPulseSync();
-      case Indicator.ballBeat:
-        return const BallBeat();
-      case Indicator.lineScalePulseOut:
-        return const LineScalePulseOut();
-      case Indicator.lineScalePulseOutRapid:
-        return const LineScalePulseOutRapid();
-      case Indicator.ballScaleRipple:
-        return const BallScaleRipple();
-      case Indicator.ballScaleRippleMultiple:
-        return const BallScaleRippleMultiple();
-      case Indicator.ballSpinFadeLoader:
-        return const BallSpinFadeLoader();
-      case Indicator.lineSpinFadeLoader:
-        return const LineSpinFadeLoader();
-      case Indicator.triangleSkewSpin:
-        return const TriangleSkewSpin();
-      case Indicator.pacman:
-        return const Pacman();
-      case Indicator.ballGridBeat:
-        return const BallGridBeat();
-      case Indicator.semiCircleSpin:
-        return const SemiCircleSpin();
-      case Indicator.ballRotateChase:
-        return const BallRotateChase();
-      case Indicator.orbit:
-        return const Orbit();
-      case Indicator.audioEqualizer:
-        return const AudioEqualizer();
-      case Indicator.circleStrokeSpin:
-        return const CircleStrokeSpin();
-    }
-  }
+  // Return the animation indicator.
+  Widget _buildIndicator() => switch (indicatorType) {
+        Indicator.ballPulse => const BallPulse(),
+        Indicator.ballGridPulse => const BallGridPulse(),
+        Indicator.ballClipRotate => const BallClipRotate(),
+        Indicator.squareSpin => const SquareSpin(),
+        Indicator.ballClipRotatePulse => const BallClipRotatePulse(),
+        Indicator.ballClipRotateMultiple => const BallClipRotateMultiple(),
+        Indicator.ballPulseRise => const BallPulseRise(),
+        Indicator.ballRotate => const BallRotate(),
+        Indicator.cubeTransition => const CubeTransition(),
+        Indicator.ballZigZag => const BallZigZag(),
+        Indicator.ballZigZagDeflect => const BallZigZagDeflect(),
+        Indicator.ballTrianglePath => const BallTrianglePath(),
+        Indicator.ballTrianglePathColored => const BallTrianglePathColored(),
+        Indicator.ballTrianglePathColoredFilled =>
+          const BallTrianglePathColored(isFilled: true),
+        Indicator.ballScale => const BallScale(),
+        Indicator.lineScale => const LineScale(),
+        Indicator.lineScaleParty => const LineScaleParty(),
+        Indicator.ballScaleMultiple => const BallScaleMultiple(),
+        Indicator.ballPulseSync => const BallPulseSync(),
+        Indicator.ballBeat => const BallBeat(),
+        Indicator.lineScalePulseOut => const LineScalePulseOut(),
+        Indicator.lineScalePulseOutRapid => const LineScalePulseOutRapid(),
+        Indicator.ballScaleRipple => const BallScaleRipple(),
+        Indicator.ballScaleRippleMultiple => const BallScaleRippleMultiple(),
+        Indicator.ballSpinFadeLoader => const BallSpinFadeLoader(),
+        Indicator.lineSpinFadeLoader => const LineSpinFadeLoader(),
+        Indicator.triangleSkewSpin => const TriangleSkewSpin(),
+        Indicator.pacman => const Pacman(),
+        Indicator.ballGridBeat => const BallGridBeat(),
+        Indicator.semiCircleSpin => const SemiCircleSpin(),
+        Indicator.ballRotateChase => const BallRotateChase(),
+        Indicator.orbit => const Orbit(),
+        Indicator.audioEqualizer => const AudioEqualizer(),
+        Indicator.circleStrokeSpin => const CircleStrokeSpin(),
+      };
 }
