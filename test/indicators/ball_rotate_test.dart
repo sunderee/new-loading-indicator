@@ -213,7 +213,6 @@ void main() {
 
       // Find the Row widget to check its children
       final row = tester.widget<Row>(find.byType(Row));
-      final spacers = row.children.whereType<SizedBox>();
 
       // Verify that circles and spacers use equal width
       for (final child in row.children) {
