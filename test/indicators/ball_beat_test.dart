@@ -7,8 +7,9 @@ import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
 void main() {
   group('BallBeat', () {
-    testWidgets('renders correct number of circles and spacers',
-        (tester) async {
+    testWidgets('renders correct number of circles and spacers', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: DecorateContext(
@@ -83,10 +84,16 @@ void main() {
       final initialOpacities = _getOpacities(tester);
 
       // Verify initial state
-      expect(initialScales[1], equals(1.0),
-          reason: 'Middle circle should start at scale 1.0');
-      expect(initialScales[0], equals(initialScales[2]),
-          reason: 'Outer circles should be in sync');
+      expect(
+        initialScales[1],
+        equals(1.0),
+        reason: 'Middle circle should start at scale 1.0',
+      );
+      expect(
+        initialScales[0],
+        equals(initialScales[2]),
+        reason: 'Outer circles should be in sync',
+      );
 
       // Let animations run for half the duration
       await tester.pump(const Duration(milliseconds: 350));
@@ -96,25 +103,43 @@ void main() {
       final delayedOpacities = _getOpacities(tester);
 
       // Verify that middle circle has started animating
-      expect(delayedScales[1], isNot(equals(initialScales[1])),
-          reason: 'Middle circle should have animated');
+      expect(
+        delayedScales[1],
+        isNot(equals(initialScales[1])),
+        reason: 'Middle circle should have animated',
+      );
 
       // Verify that outer circles are still in sync with each other
-      expect(delayedScales[0], equals(delayedScales[2]),
-          reason: 'Outer circles should remain in sync');
+      expect(
+        delayedScales[0],
+        equals(delayedScales[2]),
+        reason: 'Outer circles should remain in sync',
+      );
 
       // Verify that outer circles have different values than middle circle
-      expect(delayedScales[0], isNot(equals(delayedScales[1])),
-          reason: 'Outer circles should be out of phase with middle circle');
+      expect(
+        delayedScales[0],
+        isNot(equals(delayedScales[1])),
+        reason: 'Outer circles should be out of phase with middle circle',
+      );
 
       // Same verification for opacity
-      expect(delayedOpacities[1], isNot(equals(initialOpacities[1])),
-          reason: 'Middle circle opacity should have changed');
-      expect(delayedOpacities[0], equals(delayedOpacities[2]),
-          reason: 'Outer circles opacity should be in sync');
-      expect(delayedOpacities[0], isNot(equals(delayedOpacities[1])),
-          reason:
-              'Outer circles opacity should be out of phase with middle circle');
+      expect(
+        delayedOpacities[1],
+        isNot(equals(initialOpacities[1])),
+        reason: 'Middle circle opacity should have changed',
+      );
+      expect(
+        delayedOpacities[0],
+        equals(delayedOpacities[2]),
+        reason: 'Outer circles opacity should be in sync',
+      );
+      expect(
+        delayedOpacities[0],
+        isNot(equals(delayedOpacities[1])),
+        reason:
+            'Outer circles opacity should be out of phase with middle circle',
+      );
     });
 
     testWidgets('responds to pause state', (tester) async {

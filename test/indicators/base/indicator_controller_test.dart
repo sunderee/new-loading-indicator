@@ -54,8 +54,9 @@ void main() {
         ),
       );
 
-      final state =
-          tester.state<TestIndicatorState>(find.byType(TestIndicator));
+      final state = tester.state<TestIndicatorState>(
+        find.byType(TestIndicator),
+      );
       expect(state.isPaused, isTrue);
       expect(state.isControllerAnimating, isFalse);
     });
@@ -72,8 +73,9 @@ void main() {
         ),
       );
 
-      final state =
-          tester.state<TestIndicatorState>(find.byType(TestIndicator));
+      final state = tester.state<TestIndicatorState>(
+        find.byType(TestIndicator),
+      );
       expect(state.isPaused, isFalse);
       expect(state.isControllerAnimating, isTrue);
 
@@ -105,8 +107,9 @@ void main() {
         ),
       );
 
-      final state =
-          tester.state<TestIndicatorState>(find.byType(TestIndicator));
+      final state = tester.state<TestIndicatorState>(
+        find.byType(TestIndicator),
+      );
 
       // Simulate widget reactivation by rebuilding
       await tester.pumpWidget(

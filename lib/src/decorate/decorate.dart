@@ -59,8 +59,8 @@ final class DecorateData {
     double? strokeWidth,
     this.pathBackgroundColor,
     required this.pause,
-  })  : _strokeWidth = strokeWidth,
-        assert(colors.length > 0, 'At least one color must be provided');
+  }) : _strokeWidth = strokeWidth,
+       assert(colors.length > 0, 'At least one color must be provided');
 
   /// Gets the stroke width to use for the animation.
   /// Returns the specified stroke width or [_kDefaultStrokeWidth] if none was specified.

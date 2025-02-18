@@ -42,10 +42,7 @@ void main() {
             child: const SizedBox(
               width: 20, // Less than minimum
               height: 20, // Less than minimum
-              child: IndicatorShapeWidget(
-                key: shapeKey,
-                shape: Shape.circle,
-              ),
+              child: IndicatorShapeWidget(key: shapeKey, shape: Shape.circle),
             ),
           ),
         ),
@@ -81,13 +78,25 @@ void main() {
             child: const Column(
               children: [
                 IndicatorShapeWidget(
-                    key: Key('shape_0'), shape: Shape.circle, index: 0),
+                  key: Key('shape_0'),
+                  shape: Shape.circle,
+                  index: 0,
+                ),
                 IndicatorShapeWidget(
-                    key: Key('shape_1'), shape: Shape.circle, index: 1),
+                  key: Key('shape_1'),
+                  shape: Shape.circle,
+                  index: 1,
+                ),
                 IndicatorShapeWidget(
-                    key: Key('shape_2'), shape: Shape.circle, index: 2),
+                  key: Key('shape_2'),
+                  shape: Shape.circle,
+                  index: 2,
+                ),
                 IndicatorShapeWidget(
-                    key: Key('shape_3'), shape: Shape.circle, index: 3),
+                  key: Key('shape_3'),
+                  shape: Shape.circle,
+                  index: 3,
+                ),
               ],
             ),
           ),

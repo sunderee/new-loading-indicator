@@ -70,19 +70,28 @@ final class _AudioEqualizerState extends State<AudioEqualizer>
   void _initializeAnimations() {
     for (int i = 0; i < _lineNum; i++) {
       // Create a controller with the specified duration for this bar
-      _animationControllers.add(AnimationController(
-          vsync: this, duration: Duration(milliseconds: _durationInMills[i])));
+      _animationControllers.add(
+        AnimationController(
+          vsync: this,
+          duration: Duration(milliseconds: _durationInMills[i]),
+        ),
+      );
 
       // Create the sequence of animations for this bar
       final sequences = <TweenSequenceItem<double>>[];
       for (int j = 0; j < _values.length - 1; j++) {
-        sequences.add(TweenSequenceItem(
-            tween: Tween(begin: _values[j], end: _values[j + 1]), weight: 1));
+        sequences.add(
+          TweenSequenceItem(
+            tween: Tween(begin: _values[j], end: _values[j + 1]),
+            weight: 1,
+          ),
+        );
       }
 
       // Create and store the animation
-      _animations
-          .add(TweenSequence(sequences).animate(_animationControllers[i]));
+      _animations.add(
+        TweenSequence(sequences).animate(_animationControllers[i]),
+      );
 
       // Start the animation
       _animationControllers[i].repeat();
@@ -103,16 +112,13 @@ final class _AudioEqualizerState extends State<AudioEqualizer>
             animation: _animations[i ~/ 2],
             builder: (_, child) {
               return Transform(
-                transform: Matrix4.identity()
-                  ..scale(1.0, _animations[i ~/ 2].value),
+                transform:
+                    Matrix4.identity()..scale(1.0, _animations[i ~/ 2].value),
                 alignment: Alignment.bottomCenter,
                 child: child,
               );
             },
-            child: IndicatorShapeWidget(
-              shape: Shape.rectangle,
-              index: i ~/ 2,
-            ),
+            child: IndicatorShapeWidget(shape: Shape.rectangle, index: i ~/ 2),
           ),
         );
       } else {

@@ -26,15 +26,21 @@ class _LineScalePulseOutState extends State<LineScalePulseOut>
     super.initState();
     const cubic = Cubic(0.85, 0.25, 0.37, 0.85);
     for (int i = 0; i < 5; i++) {
-      _animationControllers.add(AnimationController(
+      _animationControllers.add(
+        AnimationController(
           value: _delayInMills[i] / _durationInMills,
           vsync: this,
-          duration: const Duration(milliseconds: _durationInMills)));
-      _animations.add(TweenSequence([
-        TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.4), weight: 1),
-        TweenSequenceItem(tween: Tween(begin: 0.4, end: 1.0), weight: 1),
-      ]).animate(
-          CurvedAnimation(parent: _animationControllers[i], curve: cubic)));
+          duration: const Duration(milliseconds: _durationInMills),
+        ),
+      );
+      _animations.add(
+        TweenSequence([
+          TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.4), weight: 1),
+          TweenSequenceItem(tween: Tween(begin: 0.4, end: 1.0), weight: 1),
+        ]).animate(
+          CurvedAnimation(parent: _animationControllers[i], curve: cubic),
+        ),
+      );
 
       _animationControllers[i].repeat();
     }
@@ -51,10 +57,7 @@ class _LineScalePulseOutState extends State<LineScalePulseOut>
             builder: (BuildContext context, Widget? child) {
               return FractionallySizedBox(
                 heightFactor: _animations[i ~/ 2].value,
-                child: IndicatorShapeWidget(
-                  shape: Shape.line,
-                  index: i ~/ 2,
-                ),
+                child: IndicatorShapeWidget(shape: Shape.line, index: i ~/ 2),
               );
             },
           ),

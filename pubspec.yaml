@@ -4,15 +4,15 @@ version: 0.0.1
 repository: https://github.com/sunderee/new-loading-indicator
 
 environment:
-  sdk: ">=3.6.0 <4.0.0"
-  flutter: ">=3.27.1"
+  sdk: ">=3.7.0"
+  flutter: ">=3.29.0"
 
 topics:
   - loading-indicator
 
 dependencies:
-  async: ^2.11.0
-  collection: ^1.19.0
+  async: ^2.12.0
+  collection: ^1.19.1
   flutter:
     sdk: flutter
 

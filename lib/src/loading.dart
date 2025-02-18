@@ -107,11 +107,13 @@ final class LoadingIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     if (indicatorType == Indicator.circleStrokeSpin && pause) {
       debugPrint(
-          "LoadingIndicator: it will not take any effect when set pause:true on ${Indicator.circleStrokeSpin}");
+        "LoadingIndicator: it will not take any effect when set pause:true on ${Indicator.circleStrokeSpin}",
+      );
     }
-    List<Color> safeColors = colors == null || colors!.isEmpty
-        ? [Theme.of(context).primaryColor]
-        : colors!;
+    List<Color> safeColors =
+        colors == null || colors!.isEmpty
+            ? [Theme.of(context).primaryColor]
+            : colors!;
     return DecorateContext(
       decorateData: DecorateData(
         indicator: indicatorType,
@@ -122,50 +124,48 @@ final class LoadingIndicator extends StatelessWidget {
       ),
       child: AspectRatio(
         aspectRatio: 1,
-        child: Container(
-          color: backgroundColor,
-          child: _buildIndicator(),
-        ),
+        child: Container(color: backgroundColor, child: _buildIndicator()),
       ),
     );
   }
 
   // Return the animation indicator.
   Widget _buildIndicator() => switch (indicatorType) {
-        Indicator.ballPulse => const BallPulse(),
-        Indicator.ballGridPulse => const BallGridPulse(),
-        Indicator.ballClipRotate => const BallClipRotate(),
-        Indicator.squareSpin => const SquareSpin(),
-        Indicator.ballClipRotatePulse => const BallClipRotatePulse(),
-        Indicator.ballClipRotateMultiple => const BallClipRotateMultiple(),
-        Indicator.ballPulseRise => const BallPulseRise(),
-        Indicator.ballRotate => const BallRotate(),
-        Indicator.cubeTransition => const CubeTransition(),
-        Indicator.ballZigZag => const BallZigZag(),
-        Indicator.ballZigZagDeflect => const BallZigZagDeflect(),
-        Indicator.ballTrianglePath => const BallTrianglePath(),
-        Indicator.ballTrianglePathColored => const BallTrianglePathColored(),
-        Indicator.ballTrianglePathColoredFilled =>
-          const BallTrianglePathColored(isFilled: true),
-        Indicator.ballScale => const BallScale(),
-        Indicator.lineScale => const LineScale(),
-        Indicator.lineScaleParty => const LineScaleParty(),
-        Indicator.ballScaleMultiple => const BallScaleMultiple(),
-        Indicator.ballPulseSync => const BallPulseSync(),
-        Indicator.ballBeat => const BallBeat(),
-        Indicator.lineScalePulseOut => const LineScalePulseOut(),
-        Indicator.lineScalePulseOutRapid => const LineScalePulseOutRapid(),
-        Indicator.ballScaleRipple => const BallScaleRipple(),
-        Indicator.ballScaleRippleMultiple => const BallScaleRippleMultiple(),
-        Indicator.ballSpinFadeLoader => const BallSpinFadeLoader(),
-        Indicator.lineSpinFadeLoader => const LineSpinFadeLoader(),
-        Indicator.triangleSkewSpin => const TriangleSkewSpin(),
-        Indicator.pacman => const Pacman(),
-        Indicator.ballGridBeat => const BallGridBeat(),
-        Indicator.semiCircleSpin => const SemiCircleSpin(),
-        Indicator.ballRotateChase => const BallRotateChase(),
-        Indicator.orbit => const Orbit(),
-        Indicator.audioEqualizer => const AudioEqualizer(),
-        Indicator.circleStrokeSpin => const CircleStrokeSpin(),
-      };
+    Indicator.ballPulse => const BallPulse(),
+    Indicator.ballGridPulse => const BallGridPulse(),
+    Indicator.ballClipRotate => const BallClipRotate(),
+    Indicator.squareSpin => const SquareSpin(),
+    Indicator.ballClipRotatePulse => const BallClipRotatePulse(),
+    Indicator.ballClipRotateMultiple => const BallClipRotateMultiple(),
+    Indicator.ballPulseRise => const BallPulseRise(),
+    Indicator.ballRotate => const BallRotate(),
+    Indicator.cubeTransition => const CubeTransition(),
+    Indicator.ballZigZag => const BallZigZag(),
+    Indicator.ballZigZagDeflect => const BallZigZagDeflect(),
+    Indicator.ballTrianglePath => const BallTrianglePath(),
+    Indicator.ballTrianglePathColored => const BallTrianglePathColored(),
+    Indicator.ballTrianglePathColoredFilled => const BallTrianglePathColored(
+      isFilled: true,
+    ),
+    Indicator.ballScale => const BallScale(),
+    Indicator.lineScale => const LineScale(),
+    Indicator.lineScaleParty => const LineScaleParty(),
+    Indicator.ballScaleMultiple => const BallScaleMultiple(),
+    Indicator.ballPulseSync => const BallPulseSync(),
+    Indicator.ballBeat => const BallBeat(),
+    Indicator.lineScalePulseOut => const LineScalePulseOut(),
+    Indicator.lineScalePulseOutRapid => const LineScalePulseOutRapid(),
+    Indicator.ballScaleRipple => const BallScaleRipple(),
+    Indicator.ballScaleRippleMultiple => const BallScaleRippleMultiple(),
+    Indicator.ballSpinFadeLoader => const BallSpinFadeLoader(),
+    Indicator.lineSpinFadeLoader => const LineSpinFadeLoader(),
+    Indicator.triangleSkewSpin => const TriangleSkewSpin(),
+    Indicator.pacman => const Pacman(),
+    Indicator.ballGridBeat => const BallGridBeat(),
+    Indicator.semiCircleSpin => const SemiCircleSpin(),
+    Indicator.ballRotateChase => const BallRotateChase(),
+    Indicator.orbit => const Orbit(),
+    Indicator.audioEqualizer => const AudioEqualizer(),
+    Indicator.circleStrokeSpin => const CircleStrokeSpin(),
+  };
 }

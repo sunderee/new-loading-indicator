@@ -127,29 +127,31 @@ void main() {
       await tester.pump();
 
       // Get initial Y scales
-      final initialScales = tester
-          .widgetList<Transform>(
-            find.descendant(
-              of: find.byType(AnimatedBuilder),
-              matching: find.byType(Transform),
-            ),
-          )
-          .map((t) => t.transform.getRow(1)[1])
-          .toList();
+      final initialScales =
+          tester
+              .widgetList<Transform>(
+                find.descendant(
+                  of: find.byType(AnimatedBuilder),
+                  matching: find.byType(Transform),
+                ),
+              )
+              .map((t) => t.transform.getRow(1)[1])
+              .toList();
 
       // Let animations run
       await tester.pump(const Duration(seconds: 1));
 
       // Get scales after animation
-      final animatedScales = tester
-          .widgetList<Transform>(
-            find.descendant(
-              of: find.byType(AnimatedBuilder),
-              matching: find.byType(Transform),
-            ),
-          )
-          .map((t) => t.transform.getRow(1)[1])
-          .toList();
+      final animatedScales =
+          tester
+              .widgetList<Transform>(
+                find.descendant(
+                  of: find.byType(AnimatedBuilder),
+                  matching: find.byType(Transform),
+                ),
+              )
+              .map((t) => t.transform.getRow(1)[1])
+              .toList();
 
       // Verify that scales have changed during animation
       expect(initialScales, isNot(equals(animatedScales)));
@@ -169,29 +171,31 @@ void main() {
       );
 
       // Get scales right after pause
-      final pausedScales = tester
-          .widgetList<Transform>(
-            find.descendant(
-              of: find.byType(AnimatedBuilder),
-              matching: find.byType(Transform),
-            ),
-          )
-          .map((t) => t.transform.getRow(1)[1])
-          .toList();
+      final pausedScales =
+          tester
+              .widgetList<Transform>(
+                find.descendant(
+                  of: find.byType(AnimatedBuilder),
+                  matching: find.byType(Transform),
+                ),
+              )
+              .map((t) => t.transform.getRow(1)[1])
+              .toList();
 
       // Wait a bit more
       await tester.pump(const Duration(seconds: 1));
 
       // Get scales after waiting while paused
-      final stillPausedScales = tester
-          .widgetList<Transform>(
-            find.descendant(
-              of: find.byType(AnimatedBuilder),
-              matching: find.byType(Transform),
-            ),
-          )
-          .map((t) => t.transform.getRow(1)[1])
-          .toList();
+      final stillPausedScales =
+          tester
+              .widgetList<Transform>(
+                find.descendant(
+                  of: find.byType(AnimatedBuilder),
+                  matching: find.byType(Transform),
+                ),
+              )
+              .map((t) => t.transform.getRow(1)[1])
+              .toList();
 
       // Verify scales haven't changed while paused
       expect(pausedScales, equals(stillPausedScales));

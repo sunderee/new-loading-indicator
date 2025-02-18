@@ -125,8 +125,9 @@ void main() {
       expect(foundContext!.decorateData, equals(data));
     });
 
-    testWidgets('returns null when no DecorateContext is found',
-        (tester) async {
+    testWidgets('returns null when no DecorateContext is found', (
+      tester,
+    ) async {
       late DecorateContext? foundContext;
       await tester.pumpWidget(
         Builder(

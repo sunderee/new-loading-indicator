@@ -4,8 +4,9 @@ import 'package:new_loading_indicator/src/transition/scale_y_transition.dart';
 
 void main() {
   group('ScaleYTransition', () {
-    testWidgets('scales child vertically based on animation value',
-        (tester) async {
+    testWidgets('scales child vertically based on animation value', (
+      tester,
+    ) async {
       const childKey = Key('child');
       final controller = AnimationController(
         vsync: tester,
@@ -68,10 +69,7 @@ void main() {
 
     testWidgets('respects alignment property', (tester) async {
       const childKey = Key('child');
-      final controller = AnimationController(
-        vsync: tester,
-        value: 1.0,
-      );
+      final controller = AnimationController(vsync: tester, value: 1.0);
 
       await tester.pumpWidget(
         MaterialApp(
@@ -100,19 +98,10 @@ void main() {
     });
 
     testWidgets('handles null child', (tester) async {
-      final controller = AnimationController(
-        vsync: tester,
-        value: 1.0,
-      );
+      final controller = AnimationController(vsync: tester, value: 1.0);
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: Center(
-            child: ScaleYTransition(
-              scaleY: controller,
-            ),
-          ),
-        ),
+        MaterialApp(home: Center(child: ScaleYTransition(scaleY: controller))),
       );
 
       expect(find.byType(Transform), findsOneWidget);
@@ -122,10 +111,7 @@ void main() {
 
     testWidgets('only scales in Y direction', (tester) async {
       const childKey = Key('child');
-      final controller = AnimationController(
-        vsync: tester,
-        value: 1.0,
-      );
+      final controller = AnimationController(vsync: tester, value: 1.0);
       final animation = Tween<double>(begin: 1.0, end: 2.0).animate(controller);
 
       await tester.pumpWidget(

@@ -28,21 +28,29 @@ class _BallScaleRippleMultipleState extends State<BallScaleRippleMultiple>
     super.initState();
     const cubic = Cubic(0.21, 0.53, 0.56, 0.8);
     for (int i = 0; i < 3; i++) {
-      _animationControllers.add(AnimationController(
-        value: _delayInMills[i] / _durationInMills,
-        vsync: this,
-        duration: const Duration(milliseconds: _durationInMills),
-      ));
-      _opacityAnimations.add(TweenSequence([
-        TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.7), weight: 70),
-        TweenSequenceItem(tween: Tween(begin: 0.7, end: 0.0), weight: 30),
-      ]).animate(
-          CurvedAnimation(parent: _animationControllers[i], curve: cubic)));
-      _scaleAnimations.add(TweenSequence([
-        TweenSequenceItem(tween: Tween(begin: 0.0, end: 1.0), weight: 70),
-        TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.0), weight: 70),
-      ]).animate(
-          CurvedAnimation(parent: _animationControllers[i], curve: cubic)));
+      _animationControllers.add(
+        AnimationController(
+          value: _delayInMills[i] / _durationInMills,
+          vsync: this,
+          duration: const Duration(milliseconds: _durationInMills),
+        ),
+      );
+      _opacityAnimations.add(
+        TweenSequence([
+          TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.7), weight: 70),
+          TweenSequenceItem(tween: Tween(begin: 0.7, end: 0.0), weight: 30),
+        ]).animate(
+          CurvedAnimation(parent: _animationControllers[i], curve: cubic),
+        ),
+      );
+      _scaleAnimations.add(
+        TweenSequence([
+          TweenSequenceItem(tween: Tween(begin: 0.0, end: 1.0), weight: 70),
+          TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.0), weight: 70),
+        ]).animate(
+          CurvedAnimation(parent: _animationControllers[i], curve: cubic),
+        ),
+      );
       _animationControllers[i].repeat();
     }
   }
@@ -55,10 +63,7 @@ class _BallScaleRippleMultipleState extends State<BallScaleRippleMultiple>
         scale: _scaleAnimations[i],
         child: FadeTransition(
           opacity: _opacityAnimations[i],
-          child: IndicatorShapeWidget(
-            shape: Shape.ring,
-            index: i,
-          ),
+          child: IndicatorShapeWidget(shape: Shape.ring, index: i),
         ),
       );
     }

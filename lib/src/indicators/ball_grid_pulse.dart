@@ -26,17 +26,7 @@ class _BallGridPulseState extends State<BallGridPulse>
     1060,
   ];
 
-  static const _delayInMills = [
-    660,
-    250,
-    1110,
-    480,
-    310,
-    30,
-    460,
-    480,
-    450,
-  ];
+  static const _delayInMills = [660, 250, 1110, 480, 310, 30, 460, 480, 450];
 
   final List<AnimationController> _animationControllers = [];
   final List<Animation<double>> _scaleAnimations = [];
@@ -51,23 +41,35 @@ class _BallGridPulseState extends State<BallGridPulse>
     for (int i = 0; i < _ballNum; i++) {
       final duration = _durationInMills[i];
       final delay = _delayInMills[i];
-      _animationControllers.add(AnimationController(
-        value: delay / duration,
-        vsync: this,
-        duration: Duration(milliseconds: duration),
-      ));
-      _scaleAnimations.add(TweenSequence([
-        TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.5), weight: 1),
-        TweenSequenceItem(tween: Tween(begin: 0.5, end: 1.0), weight: 1),
-      ]).animate(CurvedAnimation(
-        parent: _animationControllers[i],
-        curve: Curves.linear,
-      )));
-      _opacityAnimations.add(TweenSequence([
-        TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.7), weight: 1),
-        TweenSequenceItem(tween: Tween(begin: 0.7, end: 1.0), weight: 1),
-      ]).animate(CurvedAnimation(
-          parent: _animationControllers[i], curve: Curves.linear)));
+      _animationControllers.add(
+        AnimationController(
+          value: delay / duration,
+          vsync: this,
+          duration: Duration(milliseconds: duration),
+        ),
+      );
+      _scaleAnimations.add(
+        TweenSequence([
+          TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.5), weight: 1),
+          TweenSequenceItem(tween: Tween(begin: 0.5, end: 1.0), weight: 1),
+        ]).animate(
+          CurvedAnimation(
+            parent: _animationControllers[i],
+            curve: Curves.linear,
+          ),
+        ),
+      );
+      _opacityAnimations.add(
+        TweenSequence([
+          TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.7), weight: 1),
+          TweenSequenceItem(tween: Tween(begin: 0.7, end: 1.0), weight: 1),
+        ]).animate(
+          CurvedAnimation(
+            parent: _animationControllers[i],
+            curve: Curves.linear,
+          ),
+        ),
+      );
       _animationControllers[i].repeat();
     }
   }
@@ -81,10 +83,7 @@ class _BallGridPulseState extends State<BallGridPulse>
         scale: _scaleAnimations[i],
         child: FadeTransition(
           opacity: _opacityAnimations[i],
-          child: IndicatorShapeWidget(
-            shape: Shape.circle,
-            index: i,
-          ),
+          child: IndicatorShapeWidget(shape: Shape.circle, index: i),
         ),
       );
     }

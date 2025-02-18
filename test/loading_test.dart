@@ -9,9 +9,7 @@ void main() {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
-            body: LoadingIndicator(
-              indicatorType: Indicator.ballPulse,
-            ),
+            body: LoadingIndicator(indicatorType: Indicator.ballPulse),
           ),
         ),
       );
@@ -34,8 +32,9 @@ void main() {
         ),
       );
 
-      final widget =
-          tester.widget<LoadingIndicator>(find.byType(LoadingIndicator));
+      final widget = tester.widget<LoadingIndicator>(
+        find.byType(LoadingIndicator),
+      );
       expect(widget.colors, equals(customColors));
     });
 
@@ -51,8 +50,9 @@ void main() {
         ),
       );
 
-      final widget =
-          tester.widget<LoadingIndicator>(find.byType(LoadingIndicator));
+      final widget = tester.widget<LoadingIndicator>(
+        find.byType(LoadingIndicator),
+      );
       expect(widget.pause, isTrue);
     });
   });

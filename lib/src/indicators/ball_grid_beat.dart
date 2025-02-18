@@ -48,16 +48,24 @@ class _BallGridBeatState extends State<BallGridBeat>
   void initState() {
     super.initState();
     for (int i = 0; i < _ballNum; i++) {
-      _animationControllers.add(AnimationController(
-        value: _delayInMills[i] / _durationInMills[i],
-        vsync: this,
-        duration: Duration(milliseconds: _durationInMills[i]),
-      ));
-      _animations.add(TweenSequence([
-        TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.7), weight: 1),
-        TweenSequenceItem(tween: Tween(begin: 0.7, end: 1.0), weight: 1),
-      ]).animate(CurvedAnimation(
-          parent: _animationControllers[i], curve: Curves.linear)));
+      _animationControllers.add(
+        AnimationController(
+          value: _delayInMills[i] / _durationInMills[i],
+          vsync: this,
+          duration: Duration(milliseconds: _durationInMills[i]),
+        ),
+      );
+      _animations.add(
+        TweenSequence([
+          TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.7), weight: 1),
+          TweenSequenceItem(tween: Tween(begin: 0.7, end: 1.0), weight: 1),
+        ]).animate(
+          CurvedAnimation(
+            parent: _animationControllers[i],
+            curve: Curves.linear,
+          ),
+        ),
+      );
       _animationControllers[i].repeat();
     }
   }
@@ -71,10 +79,7 @@ class _BallGridBeatState extends State<BallGridBeat>
         scale: _animations[i],
         child: FadeTransition(
           opacity: _animations[i],
-          child: IndicatorShapeWidget(
-            shape: Shape.circle,
-            index: i,
-          ),
+          child: IndicatorShapeWidget(shape: Shape.circle, index: i),
         ),
       );
     }
