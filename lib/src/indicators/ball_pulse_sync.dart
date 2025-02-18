@@ -2,21 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
 import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
-/// BallPulseSync.
+/// A loading indicator that displays three circles pulsing up and down in a synchronized manner.
+///
+/// The animation consists of three circles that move vertically in a wave-like pattern,
+/// creating a synchronized pulsing effect. Each circle's movement is slightly delayed
+/// from the previous one, creating a smooth visual sequence.
+///
+/// The animation runs continuously until the widget is disposed.
 class BallPulseSync extends StatefulWidget {
+  /// Creates a BallPulseSync loading indicator.
   const BallPulseSync({super.key});
 
   @override
   State<BallPulseSync> createState() => _BallPulseSyncState();
 }
 
+/// The state for the [BallPulseSync] widget.
+///
+/// This state manages the animation controllers and animations for the three
+/// pulsing circles. Each circle has its own animation controller with a specific
+/// delay to create the synchronized pulsing effect.
 class _BallPulseSyncState extends State<BallPulseSync>
     with TickerProviderStateMixin, IndicatorController {
+  /// Delays in milliseconds for each circle's animation.
   static const _delayInMills = [70, 140, 210];
 
+  /// Total duration of one complete animation cycle in milliseconds.
   static const _durationInMills = 600;
 
+  /// List of animation controllers for each circle.
   final List<AnimationController> _animationControllers = [];
+
+  /// List of animations that control the vertical movement of each circle.
   final List<Animation<double>> _animations = [];
 
   @override

@@ -2,24 +2,42 @@ import 'package:flutter/material.dart';
 import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
 import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
-/// BallPulse.
+/// A loading indicator that displays three circles pulsing with scale and opacity animations.
+///
+/// The animation consists of three circles that scale down while slightly fading out,
+/// then scale back up while returning to full opacity. Each circle's animation is
+/// slightly delayed from the previous one, creating a smooth pulsing sequence.
+///
+/// The animation uses a custom cubic curve for a more dynamic effect and runs
+/// continuously until the widget is disposed.
 class BallPulse extends StatefulWidget {
+  /// Creates a BallPulse loading indicator.
   const BallPulse({super.key});
 
   @override
-  State<StatefulWidget> createState() {
-    return _BallPulseState();
-  }
+  State<StatefulWidget> createState() => _BallPulseState();
 }
 
+/// The state for the [BallPulse] widget.
+///
+/// This state manages the animation controllers and animations for the three
+/// pulsing circles. Each circle has its own animation controller with a specific
+/// delay, and combines scale and opacity animations for a more dynamic effect.
 class _BallPulseState extends State<BallPulse>
     with TickerProviderStateMixin, IndicatorController {
+  /// Total duration of one complete animation cycle in milliseconds.
   static const _durationInMills = 750;
 
+  /// Delays in milliseconds for each circle's animation.
   static const _delayInMills = [120, 240, 360];
 
+  /// List of animation controllers for each circle.
   final List<AnimationController> _animationControllers = [];
+
+  /// List of animations that control the scale of each circle.
   final List<Animation<double>> _scaleAnimations = [];
+
+  /// List of animations that control the opacity of each circle.
   final List<Animation<double>> _opacityAnimations = [];
 
   @override
