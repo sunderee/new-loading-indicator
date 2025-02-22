@@ -3,27 +3,54 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:new_loading_indicator/src/decorate/decorate.dart';
 
+/// The minimum size in logical pixels for any indicator.
 const double _kMinIndicatorSize = 36.0;
 
-/// Basic shape.
+/// Defines the basic shapes available for loading indicators.
+/// These shapes serve as building blocks for more complex loading animations.
 enum Shape {
+  /// A filled circle shape
   circle,
+
+  /// A three-quarter ring shape (spans 270 degrees)
   ringThirdFour,
+
+  /// A rectangular shape
   rectangle,
+
+  /// A ring split into two vertical halves
   ringTwoHalfVertical,
+
+  /// A complete ring shape
   ring,
+
+  /// A line shape with rounded ends
   line,
+
+  /// A triangular shape
   triangle,
+
+  /// An arc shape that requires additional data parameter
   arc,
+
+  /// A semi-circular shape
   circleSemi,
 }
 
-/// Wrapper class for basic shape.
-class IndicatorShapeWidget extends StatelessWidget {
+/// A widget that renders basic shapes used in loading indicators.
+///
+/// This widget serves as a wrapper for the [_ShapePainter] and handles the rendering
+/// of various basic shapes defined in the [Shape] enum. It uses [CustomPaint] to
+/// draw the shapes and supports customization through colors and dimensions.
+final class IndicatorShapeWidget extends StatelessWidget {
+  /// The type of shape to render
   final Shape shape;
+
+  /// Additional data required for certain shapes (e.g., arc angle)
   final double? data;
 
-  /// The index of shape in the widget.
+  /// The index of this shape when multiple shapes are used in an indicator.
+  /// Used for color cycling in multi-shape indicators.
   final int index;
 
   const IndicatorShapeWidget({
@@ -56,7 +83,14 @@ class IndicatorShapeWidget extends StatelessWidget {
   }
 }
 
-class _ShapePainter extends CustomPainter {
+/// A custom painter that handles the actual drawing of indicator shapes.
+///
+/// This painter supports various shape types and customization options including:
+/// - Different shape types defined in [Shape] enum
+/// - Custom colors and stroke widths
+/// - Background paths for certain shapes
+/// - Shape-specific data parameters
+final class _ShapePainter extends CustomPainter {
   final Color color;
   final Shape shape;
   final Paint _paint;
@@ -70,8 +104,8 @@ class _ShapePainter extends CustomPainter {
     this.data,
     this.strokeWidth, {
     this.pathColor,
-  })  : _paint = Paint()..isAntiAlias = true,
-        super();
+  }) : _paint = Paint()..isAntiAlias = true,
+       super();
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -125,7 +159,11 @@ class _ShapePainter extends CustomPainter {
           ..strokeWidth = strokeWidth
           ..style = PaintingStyle.stroke;
         final rect = Rect.fromLTWH(
-            size.width / 4, size.height / 4, size.width / 2, size.height / 2);
+          size.width / 4,
+          size.height / 4,
+          size.width / 2,
+          size.height / 2,
+        );
         canvas.drawArc(rect, -3 * pi / 4, pi / 2, false, _paint);
         canvas.drawArc(rect, 3 * pi / 4, -pi / 2, false, _paint);
         break;
@@ -134,29 +172,35 @@ class _ShapePainter extends CustomPainter {
           ..color = color
           ..strokeWidth = strokeWidth
           ..style = PaintingStyle.stroke;
-        canvas.drawCircle(Offset(size.width / 2, size.height / 2),
-            size.shortestSide / 2, _paint);
+        canvas.drawCircle(
+          Offset(size.width / 2, size.height / 2),
+          size.shortestSide / 2,
+          _paint,
+        );
         break;
       case Shape.line:
         _paint
           ..color = color
           ..style = PaintingStyle.fill;
         canvas.drawRRect(
-            RRect.fromRectAndRadius(
-                Rect.fromLTWH(0, 0, size.width, size.height),
-                Radius.circular(size.shortestSide / 2)),
-            _paint);
+          RRect.fromRectAndRadius(
+            Rect.fromLTWH(0, 0, size.width, size.height),
+            Radius.circular(size.shortestSide / 2),
+          ),
+          _paint,
+        );
         break;
       case Shape.triangle:
         final offsetY = size.height / 4;
         _paint
           ..color = color
           ..style = PaintingStyle.fill;
-        Path path = Path()
-          ..moveTo(0, size.height - offsetY)
-          ..lineTo(size.width / 2, size.height / 2 - offsetY)
-          ..lineTo(size.width, size.height - offsetY)
-          ..close();
+        Path path =
+            Path()
+              ..moveTo(0, size.height - offsetY)
+              ..lineTo(size.width / 2, size.height / 2 - offsetY)
+              ..lineTo(size.width, size.height - offsetY)
+              ..close();
         canvas.drawPath(path, _paint);
         break;
       case Shape.arc:
@@ -165,7 +209,12 @@ class _ShapePainter extends CustomPainter {
           ..color = color
           ..style = PaintingStyle.fill;
         canvas.drawArc(
-            Offset.zero & size, data!, pi * 2 - 2 * data!, true, _paint);
+          Offset.zero & size,
+          data!,
+          pi * 2 - 2 * data!,
+          true,
+          _paint,
+        );
         break;
       case Shape.circleSemi:
         _paint
