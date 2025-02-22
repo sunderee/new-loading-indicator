@@ -4,8 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:new_loading_indicator/src/indicators/base/indicator_controller.dart';
 import 'package:new_loading_indicator/src/shape/indicator_painter.dart';
 
-/// Pacman.
+/// A Pacman-themed loading indicator that shows an animated Pacman character
+/// eating dots.
+///
+/// The animation consists of:
+/// * A Pacman character that opens and closes its mouth (represented by an arc)
+/// * Two dots that move from right to left, appearing to be "eaten" by the Pacman
+///
+/// The animation timing is as follows:
+/// * Pacman mouth animation: 500ms per cycle
+/// * Dot movement: 1000ms per cycle, with the second dot delayed by 500ms
 class Pacman extends StatefulWidget {
+  /// Creates a Pacman loading indicator.
   const Pacman({super.key});
 
   @override
