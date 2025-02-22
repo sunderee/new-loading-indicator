@@ -1,17 +1,13 @@
+# The Docker image that will be used to build your app
 image: ubuntu:22.04
-
-variables:
-  FLUTTER_VERSION: "3.29.0" 
-
+# Functions that should be executed before the build script is run
 before_script:
   - apt-get update && apt-get install -y curl git unzip xz-utils zip libglu1-mesa
   - git clone https://github.com/flutter/flutter.git -b stable --depth 1 /flutter
   - export PATH="/flutter/bin:$PATH"
   - flutter doctor -v
   - flutter --version
-
 pages:
-  stage: deploy
   script:
     - cd example
     - flutter pub get
@@ -21,11 +17,9 @@ pages:
     - mv example/build/web public
   artifacts:
     paths:
+      # The folder that contains the files to be exposed at the Page URL
       - public
   rules:
-    - if: $CI_COMMIT_BRANCH == "master"
-
-cache:
-  paths:
-    - example/.pub-cache/
-    - example/build/ 
+    # This ensures that only pushes to the default branch will trigger
+    # a pages deploy
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
