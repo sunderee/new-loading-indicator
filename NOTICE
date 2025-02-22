@@ -1,15 +1,13 @@
-This project is a fork of loading_indicator (https://github.com/TinoGuo/loading_indicator),
-originally created by TinoGuo and licensed under the Apache License 2.0.
+This project is a fork of loading_indicator, originally created by TinoGuo and licensed under the Apache License 2.0.
 
-The original package provides a collection of loading animations written in pure Dart
-for Flutter applications, inspired by loaders.css and NVActivityIndicatorView. It includes
-34 different animation types ranging from simple pulse animations to complex geometric patterns.
+The original package, which appears to be unmaintained, provides a collection of loading animations written in pure Dart for Flutter applications, inspired by loaders.css and NVActivityIndicatorView. It includes 34 different animation types, ranging from simple pulse animations to complex geometric patterns.
 
-This fork aims to:
-1. Modernize the codebase for current Flutter/Dart SDK versions
-2. Update outdated dependencies
-3. Add comprehensive test coverage
-4. Maintain active development and support
+This fork was created to:
 
-The original work remains copyrighted by its respective owners and continues to be
-licensed under the Apache License 2.0.
+- Modernize the codebase for compatibility with the latest Flutter/Dart SDK versions
+- Update outdated dependencies
+- Add comprehensive test coverage
+- Provide detailed documentation for maintainability
+- Ensure ongoing maintenance and active development
+
+The original work remains copyrighted by its respective owners and continues to be licensed under the Apache License 2.0.

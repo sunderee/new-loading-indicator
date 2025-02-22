@@ -1,6 +1,6 @@
 name: new_loading_indicator
 description: Fork of the loading_indicator package.
-version: 0.0.1
+version: 1.0.0
 repository: https://github.com/sunderee/new-loading-indicator
 
 environment:
