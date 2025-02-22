@@ -17,7 +17,7 @@ migrate_working_dir/
 .idea/
 
 # VSCode related
-#.vscode/
+.vscode/
 
 # Flutter/Dart/Pub related
 /pubspec.lock
