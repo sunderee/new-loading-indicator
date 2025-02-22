@@ -8,6 +8,8 @@ A fork of the [`loading_indicator`](https://pub.dev/packages/loading_indicator) 
 - Provide detailed documentation for maintainability
 - Ensure ongoing maintenance and active development
 
+Visit the [example on GitLab Pages](https://new-loading-indicator-c6eb32.gitlab.io) for a live demo.
+
 ## Installation
 
 Add this to your package's `pubspec.yaml` file:

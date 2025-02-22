@@ -1,3 +1,8 @@
+## 1.0.1
+
+- Created an example application to showcase the loading indicator animations.
+- Added the link to the example application running on GitLab Pages to README.md.
+
 ## 1.0.0
 
 - Initial release of the `new_loading_indicator` package.
