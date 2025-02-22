@@ -1,10 +1,10 @@
 name: new_loading_indicator
-description: Fork of the loading_indicator package.
+description: A fork of the loading_indicator package, providing a rich collection of loading animations for Flutter applications.
 version: 1.0.0
-repository: https://github.com/sunderee/new-loading-indicator
+repository: https://gitlab.com/dart-and-flutter-packages/new_loading_indicator#
 
 environment:
-  sdk: ">=3.7.0"
+  sdk: ">=3.7.0 <4.0.0"
   flutter: ">=3.29.0"
 
 topics:
