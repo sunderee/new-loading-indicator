@@ -1,3 +1,8 @@
+## 1.0.2
+
+- Bump Dart and Flutter SDK constraints.
+- Change the repository URL.
+
 ## 1.0.1
 
 - Created an example application to showcase the loading indicator animations.
