@@ -1,6 +1,6 @@
 ## 1.1.0
 
-Take care of deprecation warnings
+Update version numbers, dependencies, and analysis options. Adjusted code formatting for consistency and improved animation handling in various indicators.
 
 ## 1.0.2
 
