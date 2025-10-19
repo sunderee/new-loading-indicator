@@ -112,8 +112,11 @@ final class _AudioEqualizerState extends State<AudioEqualizer>
             animation: _animations[i ~/ 2],
             builder: (_, child) {
               return Transform(
-                transform:
-                    Matrix4.identity()..scale(1.0, _animations[i ~/ 2].value),
+                transform: Matrix4.diagonal3Values(
+                  1.0,
+                  _animations[i ~/ 2].value,
+                  1.0,
+                ),
                 alignment: Alignment.bottomCenter,
                 child: child,
               );

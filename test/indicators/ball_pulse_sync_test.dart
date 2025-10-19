@@ -48,12 +48,9 @@ void main() {
       );
 
       // Get all shapes
-      final shapes =
-          tester
-              .widgetList<IndicatorShapeWidget>(
-                find.byType(IndicatorShapeWidget),
-              )
-              .toList();
+      final shapes = tester
+          .widgetList<IndicatorShapeWidget>(find.byType(IndicatorShapeWidget))
+          .toList();
 
       // Verify all shapes are circles with correct indices
       for (int i = 0; i < 3; i++) {
@@ -86,25 +83,27 @@ void main() {
       await tester.pump();
 
       // Get initial transforms
-      final initialTransforms =
-          tester.widgetList<Transform>(find.byType(Transform)).toList();
+      final initialTransforms = tester
+          .widgetList<Transform>(find.byType(Transform))
+          .toList();
 
       // Get initial vertical positions
-      final initialPositions =
-          initialTransforms.map((t) => t.transform.getTranslation().y).toList();
+      final initialPositions = initialTransforms
+          .map((t) => t.transform.getTranslation().y)
+          .toList();
 
       // Let animations run for a short duration
       await tester.pump(const Duration(milliseconds: 100));
 
       // Get transforms after short delay
-      final shortDelayTransforms =
-          tester.widgetList<Transform>(find.byType(Transform)).toList();
+      final shortDelayTransforms = tester
+          .widgetList<Transform>(find.byType(Transform))
+          .toList();
 
       // Get positions after short delay
-      final shortDelayPositions =
-          shortDelayTransforms
-              .map((t) => t.transform.getTranslation().y)
-              .toList();
+      final shortDelayPositions = shortDelayTransforms
+          .map((t) => t.transform.getTranslation().y)
+          .toList();
 
       // Verify that animations have started
       for (int i = 0; i < 3; i++) {
@@ -119,14 +118,14 @@ void main() {
       await tester.pump(const Duration(milliseconds: 300));
 
       // Get transforms after longer delay
-      final longerDelayTransforms =
-          tester.widgetList<Transform>(find.byType(Transform)).toList();
+      final longerDelayTransforms = tester
+          .widgetList<Transform>(find.byType(Transform))
+          .toList();
 
       // Get positions after longer delay
-      final longerDelayPositions =
-          longerDelayTransforms
-              .map((t) => t.transform.getTranslation().y)
-              .toList();
+      final longerDelayPositions = longerDelayTransforms
+          .map((t) => t.transform.getTranslation().y)
+          .toList();
 
       // Verify that circles have different vertical positions due to phase difference
       final positions = Set<double>.from(longerDelayPositions);

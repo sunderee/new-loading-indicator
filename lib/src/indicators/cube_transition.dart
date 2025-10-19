@@ -68,63 +68,78 @@ class _CubeTransitionState extends State<CubeTransition>
     // 2. Move down (1.0, 1.0)
     // 3. Move left (0.0, 1.0)
     // 4. Move up (0.0, 0.0)
-    _translateAnimation = TweenSequence([
-      TweenSequenceItem(
-        tween: SizeTween(
-          begin: const Size(0.0, 0.0),
-          end: const Size(1.0, 0.0),
-        ),
-        weight: 1,
-      ),
-      TweenSequenceItem(
-        tween: SizeTween(
-          begin: const Size(1.0, 0.0),
-          end: const Size(1.0, 1.0),
-        ),
-        weight: 1,
-      ),
-      TweenSequenceItem(
-        tween: SizeTween(
-          begin: const Size(1.0, 1.0),
-          end: const Size(0.0, 1.0),
-        ),
-        weight: 1,
-      ),
-      TweenSequenceItem(
-        tween: SizeTween(
-          begin: const Size(0.0, 1.0),
-          end: const Size(0.0, 0.0),
-        ),
-        weight: 1,
-      ),
-    ]).animate(
-      CurvedAnimation(parent: _animationController, curve: Curves.linear),
-    );
+    _translateAnimation =
+        TweenSequence([
+          TweenSequenceItem(
+            tween: SizeTween(
+              begin: const Size(0.0, 0.0),
+              end: const Size(1.0, 0.0),
+            ),
+            weight: 1,
+          ),
+          TweenSequenceItem(
+            tween: SizeTween(
+              begin: const Size(1.0, 0.0),
+              end: const Size(1.0, 1.0),
+            ),
+            weight: 1,
+          ),
+          TweenSequenceItem(
+            tween: SizeTween(
+              begin: const Size(1.0, 1.0),
+              end: const Size(0.0, 1.0),
+            ),
+            weight: 1,
+          ),
+          TweenSequenceItem(
+            tween: SizeTween(
+              begin: const Size(0.0, 1.0),
+              end: const Size(0.0, 0.0),
+            ),
+            weight: 1,
+          ),
+        ]).animate(
+          CurvedAnimation(parent: _animationController, curve: Curves.linear),
+        );
 
     // Rotation animation sequence:
     // Rotates -90 degrees at each corner, completing -360 degrees total
-    _rotateAnimation = TweenSequence([
-      TweenSequenceItem(tween: Tween(begin: 0.0, end: -pi / 2), weight: 1),
-      TweenSequenceItem(tween: Tween(begin: -pi / 2, end: -pi), weight: 1),
-      TweenSequenceItem(tween: Tween(begin: -pi, end: -pi * 1.5), weight: 1),
-      TweenSequenceItem(
-        tween: Tween(begin: -pi * 1.5, end: -pi * 2),
-        weight: 1,
-      ),
-    ]).animate(
-      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
-    );
+    _rotateAnimation =
+        TweenSequence([
+          TweenSequenceItem(tween: Tween(begin: 0.0, end: -pi / 2), weight: 1),
+          TweenSequenceItem(
+            tween: Tween(begin: -pi / 2, end: -pi),
+            weight: 1,
+          ),
+          TweenSequenceItem(
+            tween: Tween(begin: -pi, end: -pi * 1.5),
+            weight: 1,
+          ),
+          TweenSequenceItem(
+            tween: Tween(begin: -pi * 1.5, end: -pi * 2),
+            weight: 1,
+          ),
+        ]).animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: Curves.easeInOut,
+          ),
+        );
 
     // Scale animation sequence:
     // Scales down to 0.5 at corners and back to 1.0 along edges
-    _scaleAnimation = TweenSequence([
-      TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.5), weight: 1),
-      TweenSequenceItem(tween: Tween(begin: 0.5, end: 1.0), weight: 1),
-      TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.5), weight: 1),
-      TweenSequenceItem(tween: Tween(begin: 0.5, end: 1.0), weight: 1),
-    ]).animate(
-      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
-    );
+    _scaleAnimation =
+        TweenSequence([
+          TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.5), weight: 1),
+          TweenSequenceItem(tween: Tween(begin: 0.5, end: 1.0), weight: 1),
+          TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.5), weight: 1),
+          TweenSequenceItem(tween: Tween(begin: 0.5, end: 1.0), weight: 1),
+        ]).animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: Curves.easeInOut,
+          ),
+        );
 
     _animationController.repeat();
   }
@@ -141,54 +156,65 @@ class _CubeTransitionState extends State<CubeTransition>
 
         return AnimatedBuilder(
           animation: _animationController,
-          builder:
-              (_, child) => Stack(
-                children: [
-                  // First square moving clockwise from top-left
-                  Positioned.fromRect(
-                    rect: Rect.fromLTWH(0, 0, squareSize, squareSize),
-                    child: Transform(
-                      alignment: Alignment.center,
-                      transform:
-                          Matrix4.identity()
-                            ..translate(
-                              _translateAnimation.value!.width * deltaX,
-                              _translateAnimation.value!.height * deltaY,
-                            )
-                            ..rotateZ(_rotateAnimation.value)
-                            ..scale(_scaleAnimation.value),
-                      child: const IndicatorShapeWidget(
-                        shape: Shape.rectangle,
-                        index: 0,
-                      ),
-                    ),
+          builder: (_, child) => Stack(
+            children: [
+              // First square moving clockwise from top-left
+              Positioned.fromRect(
+                rect: Rect.fromLTWH(0, 0, squareSize, squareSize),
+                child: Transform(
+                  alignment: Alignment.center,
+                  transform:
+                      Matrix4.diagonal3Values(
+                          _scaleAnimation.value,
+                          _scaleAnimation.value,
+                          _scaleAnimation.value,
+                        )
+                        ..multiply(Matrix4.rotationZ(_rotateAnimation.value))
+                        ..multiply(
+                          Matrix4.translationValues(
+                            _translateAnimation.value!.width * deltaX,
+                            _translateAnimation.value!.height * deltaY,
+                            0.0,
+                          ),
+                        ),
+                  child: const IndicatorShapeWidget(
+                    shape: Shape.rectangle,
+                    index: 0,
                   ),
-                  // Second square moving counterclockwise from bottom-right
-                  Positioned.fromRect(
-                    rect: Rect.fromLTWH(
-                      constraint.maxWidth - squareSize,
-                      constraint.maxHeight - squareSize,
-                      squareSize,
-                      squareSize,
-                    ),
-                    child: Transform(
-                      alignment: Alignment.center,
-                      transform:
-                          Matrix4.identity()
-                            ..translate(
-                              -_translateAnimation.value!.width * deltaX,
-                              -_translateAnimation.value!.height * deltaY,
-                            )
-                            ..rotateZ(_rotateAnimation.value)
-                            ..scale(_scaleAnimation.value),
-                      child: const IndicatorShapeWidget(
-                        shape: Shape.rectangle,
-                        index: 1,
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
+              // Second square moving counterclockwise from bottom-right
+              Positioned.fromRect(
+                rect: Rect.fromLTWH(
+                  constraint.maxWidth - squareSize,
+                  constraint.maxHeight - squareSize,
+                  squareSize,
+                  squareSize,
+                ),
+                child: Transform(
+                  alignment: Alignment.center,
+                  transform:
+                      Matrix4.diagonal3Values(
+                          _scaleAnimation.value,
+                          _scaleAnimation.value,
+                          _scaleAnimation.value,
+                        )
+                        ..multiply(Matrix4.rotationZ(_rotateAnimation.value))
+                        ..multiply(
+                          Matrix4.translationValues(
+                            -_translateAnimation.value!.width * deltaX,
+                            -_translateAnimation.value!.height * deltaY,
+                            0.0,
+                          ),
+                        ),
+                  child: const IndicatorShapeWidget(
+                    shape: Shape.rectangle,
+                    index: 1,
+                  ),
+                ),
+              ),
+            ],
+          ),
         );
       },
     );

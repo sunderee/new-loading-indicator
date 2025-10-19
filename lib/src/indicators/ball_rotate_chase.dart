@@ -97,12 +97,11 @@ class _BallRotateChaseState extends State<BallRotateChase>
               builder: (_, child) {
                 return Transform(
                   alignment: Alignment.center,
-                  transform:
-                      Matrix4.identity()..translate(
-                        // Calculate x and y positions using trigonometric functions
-                        deltaX * sin(_translateAnimations[i].value),
-                        deltaY * -cos(_translateAnimations[i].value),
-                      ),
+                  transform: Matrix4.translationValues(
+                    deltaX * sin(_translateAnimations[i].value),
+                    deltaY * -cos(_translateAnimations[i].value),
+                    0.0,
+                  ),
                   // Scale must be in child to maintain proper alignment
                   child: ScaleTransition(
                     scale: _scaleAnimations[i],

@@ -108,10 +108,10 @@ void main() {
       );
 
       // Get values after longer delay
-      final longerDelayRotation =
-          longerDelayTransform.transform.getRotation()[0];
-      final longerDelayScale =
-          longerDelayTransform.transform.getMaxScaleOnAxis();
+      final longerDelayRotation = longerDelayTransform.transform
+          .getRotation()[0];
+      final longerDelayScale = longerDelayTransform.transform
+          .getMaxScaleOnAxis();
 
       // Verify continued animation
       expect(

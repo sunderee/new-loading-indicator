@@ -59,7 +59,10 @@ final class _BallClipRotatePulseState extends State<BallClipRotatePulse>
     // Create outer ring rotation animation
     _outCircleRotate = TweenSequence([
       TweenSequenceItem(tween: Tween(begin: 0.0, end: pi), weight: 1),
-      TweenSequenceItem(tween: Tween(begin: pi, end: 2 * pi), weight: 1),
+      TweenSequenceItem(
+        tween: Tween(begin: pi, end: 2 * pi),
+        weight: 1,
+      ),
     ]).animate(CurvedAnimation(parent: _animationController, curve: cubic));
 
     // Create inner circle scale animation with asymmetric timing
@@ -76,33 +79,33 @@ final class _BallClipRotatePulseState extends State<BallClipRotatePulse>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _animationController,
-      builder:
-          (_, child) => Stack(
+      builder: (_, child) => Stack(
+        alignment: Alignment.center,
+        fit: StackFit.expand,
+        children: <Widget>[
+          // Outer rotating ring
+          Transform(
             alignment: Alignment.center,
-            fit: StackFit.expand,
-            children: <Widget>[
-              // Outer rotating ring
-              Transform(
-                alignment: Alignment.center,
-                transform:
-                    Matrix4.identity()
-                      ..scale(_outCircleScale.value)
-                      ..rotateZ(_outCircleRotate.value),
-                child: const IndicatorShapeWidget(
-                  shape: Shape.ringTwoHalfVertical,
-                  index: 0,
+            transform: Matrix4.rotationZ(_outCircleRotate.value)
+              ..multiply(
+                Matrix4.diagonal3Values(
+                  _outCircleScale.value,
+                  _outCircleScale.value,
+                  _outCircleScale.value,
                 ),
               ),
-              // Inner pulsing circle
-              Transform.scale(
-                scale: _innerCircle.value * 0.3,
-                child: const IndicatorShapeWidget(
-                  shape: Shape.circle,
-                  index: 1,
-                ),
-              ),
-            ],
+            child: const IndicatorShapeWidget(
+              shape: Shape.ringTwoHalfVertical,
+              index: 0,
+            ),
           ),
+          // Inner pulsing circle
+          Transform.scale(
+            scale: _innerCircle.value * 0.3,
+            child: const IndicatorShapeWidget(shape: Shape.circle, index: 1),
+          ),
+        ],
+      ),
     );
   }
 }

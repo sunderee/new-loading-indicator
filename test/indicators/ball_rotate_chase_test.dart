@@ -62,12 +62,9 @@ void main() {
       );
 
       // Get all shapes
-      final shapes =
-          tester
-              .widgetList<IndicatorShapeWidget>(
-                find.byType(IndicatorShapeWidget),
-              )
-              .toList();
+      final shapes = tester
+          .widgetList<IndicatorShapeWidget>(find.byType(IndicatorShapeWidget))
+          .toList();
 
       // Verify all shapes are circles with correct indices
       for (int i = 0; i < 5; i++) {

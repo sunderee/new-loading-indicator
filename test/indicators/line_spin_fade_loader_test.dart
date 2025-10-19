@@ -56,12 +56,9 @@ void main() {
       );
 
       // Get all shapes
-      final shapes =
-          tester
-              .widgetList<IndicatorShapeWidget>(
-                find.byType(IndicatorShapeWidget),
-              )
-              .toList();
+      final shapes = tester
+          .widgetList<IndicatorShapeWidget>(find.byType(IndicatorShapeWidget))
+          .toList();
 
       // Verify all shapes are lines with correct indices
       for (int i = 0; i < 8; i++) {
@@ -94,21 +91,19 @@ void main() {
       await tester.pump();
 
       // Get initial opacities
-      final initialOpacities =
-          tester
-              .widgetList<FadeTransition>(find.byType(FadeTransition))
-              .map((w) => w.opacity.value)
-              .toList();
+      final initialOpacities = tester
+          .widgetList<FadeTransition>(find.byType(FadeTransition))
+          .map((w) => w.opacity.value)
+          .toList();
 
       // Let animations run for a short duration
       await tester.pump(const Duration(milliseconds: 200));
 
       // Get opacities after short delay
-      final shortDelayOpacities =
-          tester
-              .widgetList<FadeTransition>(find.byType(FadeTransition))
-              .map((w) => w.opacity.value)
-              .toList();
+      final shortDelayOpacities = tester
+          .widgetList<FadeTransition>(find.byType(FadeTransition))
+          .map((w) => w.opacity.value)
+          .toList();
 
       // Verify that animations have started
       bool hasAnimationStarted = false;
@@ -129,11 +124,10 @@ void main() {
       await tester.pump(const Duration(milliseconds: 300));
 
       // Get opacities after longer delay
-      final longerDelayOpacities =
-          tester
-              .widgetList<FadeTransition>(find.byType(FadeTransition))
-              .map((w) => w.opacity.value)
-              .toList();
+      final longerDelayOpacities = tester
+          .widgetList<FadeTransition>(find.byType(FadeTransition))
+          .map((w) => w.opacity.value)
+          .toList();
 
       // Verify opacity bounds
       for (final opacity in longerDelayOpacities) {

@@ -110,10 +110,9 @@ final class LoadingIndicator extends StatelessWidget {
         "LoadingIndicator: it will not take any effect when set pause:true on ${Indicator.circleStrokeSpin}",
       );
     }
-    List<Color> safeColors =
-        colors == null || colors!.isEmpty
-            ? [Theme.of(context).primaryColor]
-            : colors!;
+    List<Color> safeColors = colors == null || colors!.isEmpty
+        ? [Theme.of(context).primaryColor]
+        : colors!;
     return DecorateContext(
       decorateData: DecorateData(
         indicator: indicatorType,

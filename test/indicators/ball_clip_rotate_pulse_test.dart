@@ -48,12 +48,9 @@ void main() {
       );
 
       // Get all shapes
-      final shapes =
-          tester
-              .widgetList<IndicatorShapeWidget>(
-                find.byType(IndicatorShapeWidget),
-              )
-              .toList();
+      final shapes = tester
+          .widgetList<IndicatorShapeWidget>(find.byType(IndicatorShapeWidget))
+          .toList();
 
       // Verify outer ring uses ringTwoHalfVertical shape
       expect(shapes[0].shape, equals(Shape.ringTwoHalfVertical));
@@ -79,35 +76,35 @@ void main() {
       );
 
       // Get initial transforms
-      final initialTransforms =
-          tester.widgetList<Transform>(find.byType(Transform)).toList();
+      final initialTransforms = tester
+          .widgetList<Transform>(find.byType(Transform))
+          .toList();
 
       // Get initial values
-      final initialValues =
-          initialTransforms
-              .map(
-                (t) => {
-                  'rotation': t.transform.getRotation()[0],
-                  'scale': t.transform.getMaxScaleOnAxis(),
-                },
-              )
-              .toList();
+      final initialValues = initialTransforms
+          .map(
+            (t) => {
+              'rotation': t.transform.getRotation()[0],
+              'scale': t.transform.getMaxScaleOnAxis(),
+            },
+          )
+          .toList();
 
       // Let animations run
       await tester.pump(const Duration(milliseconds: 500));
 
       // Values should have changed
-      final runningTransforms =
-          tester.widgetList<Transform>(find.byType(Transform)).toList();
-      final runningValues =
-          runningTransforms
-              .map(
-                (t) => {
-                  'rotation': t.transform.getRotation()[0],
-                  'scale': t.transform.getMaxScaleOnAxis(),
-                },
-              )
-              .toList();
+      final runningTransforms = tester
+          .widgetList<Transform>(find.byType(Transform))
+          .toList();
+      final runningValues = runningTransforms
+          .map(
+            (t) => {
+              'rotation': t.transform.getRotation()[0],
+              'scale': t.transform.getMaxScaleOnAxis(),
+            },
+          )
+          .toList();
       expect(runningValues, isNot(equals(initialValues)));
 
       // Update to paused state
@@ -125,33 +122,33 @@ void main() {
       );
 
       // Get values after pause
-      final pausedTransforms =
-          tester.widgetList<Transform>(find.byType(Transform)).toList();
-      final pausedValues =
-          pausedTransforms
-              .map(
-                (t) => {
-                  'rotation': t.transform.getRotation()[0],
-                  'scale': t.transform.getMaxScaleOnAxis(),
-                },
-              )
-              .toList();
+      final pausedTransforms = tester
+          .widgetList<Transform>(find.byType(Transform))
+          .toList();
+      final pausedValues = pausedTransforms
+          .map(
+            (t) => {
+              'rotation': t.transform.getRotation()[0],
+              'scale': t.transform.getMaxScaleOnAxis(),
+            },
+          )
+          .toList();
 
       // Let some time pass
       await tester.pump(const Duration(milliseconds: 500));
 
       // Get values after waiting while paused
-      final stillPausedTransforms =
-          tester.widgetList<Transform>(find.byType(Transform)).toList();
-      final stillPausedValues =
-          stillPausedTransforms
-              .map(
-                (t) => {
-                  'rotation': t.transform.getRotation()[0],
-                  'scale': t.transform.getMaxScaleOnAxis(),
-                },
-              )
-              .toList();
+      final stillPausedTransforms = tester
+          .widgetList<Transform>(find.byType(Transform))
+          .toList();
+      final stillPausedValues = stillPausedTransforms
+          .map(
+            (t) => {
+              'rotation': t.transform.getRotation()[0],
+              'scale': t.transform.getMaxScaleOnAxis(),
+            },
+          )
+          .toList();
 
       // Verify values haven't changed while paused
       expect(

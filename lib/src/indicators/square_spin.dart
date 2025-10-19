@@ -98,11 +98,10 @@ class _SquareSpinState extends State<SquareSpin>
         }
         return Transform(
           alignment: Alignment.center,
-          transform:
-              Matrix4.identity()
-                ..setEntry(3, 2, _perspective) // Add perspective for 3D effect
-                ..rotateX(x)
-                ..rotateY(y),
+          transform: Matrix4.identity()
+            ..setEntry(3, 2, _perspective) // Add perspective for 3D effect
+            ..rotateX(x)
+            ..rotateY(y),
           child: child,
         );
       },

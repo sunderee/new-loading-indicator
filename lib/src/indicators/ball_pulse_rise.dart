@@ -134,17 +134,25 @@ final class _BallPulseRiseState extends State<BallPulseRise>
         return Transform(
           alignment: Alignment.center,
           transform:
-              Matrix4.identity()
-                ..scale(
-                  index.isEven
-                      ? _evenScaleAnimation.value
-                      : _oddScaleAnimation.value,
-                )
-                ..translate(
+              Matrix4.translationValues(
                   0.0,
                   index.isEven
                       ? _evenTranslateAnimation.value * deltaY
                       : _oddTranslateAnimation.value * deltaY,
+                  0.0,
+                )
+                ..multiply(
+                  Matrix4.diagonal3Values(
+                    index.isEven
+                        ? _evenScaleAnimation.value
+                        : _oddScaleAnimation.value,
+                    index.isEven
+                        ? _evenScaleAnimation.value
+                        : _oddScaleAnimation.value,
+                    index.isEven
+                        ? _evenScaleAnimation.value
+                        : _oddScaleAnimation.value,
+                  ),
                 )
                 ..setEntry(3, 2, 0.006),
           child: child,

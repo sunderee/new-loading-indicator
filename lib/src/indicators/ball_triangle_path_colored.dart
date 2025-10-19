@@ -65,58 +65,79 @@ class _BallTrianglePathColoredState extends State<BallTrianglePathColored>
     );
 
     // Animation for the top center shape
-    _topCenterAnimation = TweenSequence([
-      TweenSequenceItem(
-        tween: Tween(begin: const Offset(0, 0), end: const Offset(0.5, 1)),
-        weight: 1,
-      ),
-      TweenSequenceItem(
-        tween: Tween(begin: const Offset(0.5, 1), end: const Offset(-0.5, 1)),
-        weight: 1,
-      ),
-      TweenSequenceItem(
-        tween: Tween(begin: const Offset(-0.5, 1), end: const Offset(0, 0)),
-        weight: 1,
-      ),
-    ]).animate(
-      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
-    );
+    _topCenterAnimation =
+        TweenSequence([
+          TweenSequenceItem(
+            tween: Tween(begin: const Offset(0, 0), end: const Offset(0.5, 1)),
+            weight: 1,
+          ),
+          TweenSequenceItem(
+            tween: Tween(
+              begin: const Offset(0.5, 1),
+              end: const Offset(-0.5, 1),
+            ),
+            weight: 1,
+          ),
+          TweenSequenceItem(
+            tween: Tween(begin: const Offset(-0.5, 1), end: const Offset(0, 0)),
+            weight: 1,
+          ),
+        ]).animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: Curves.easeInOut,
+          ),
+        );
 
     // Animation for the left bottom shape
-    _leftBottomAnimation = TweenSequence([
-      TweenSequenceItem(
-        tween: Tween(begin: const Offset(0, 0), end: const Offset(0.5, -1)),
-        weight: 1,
-      ),
-      TweenSequenceItem(
-        tween: Tween(begin: const Offset(0.5, -1), end: const Offset(1, 0)),
-        weight: 1,
-      ),
-      TweenSequenceItem(
-        tween: Tween(begin: const Offset(1, 0), end: const Offset(0, 0)),
-        weight: 1,
-      ),
-    ]).animate(
-      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
-    );
+    _leftBottomAnimation =
+        TweenSequence([
+          TweenSequenceItem(
+            tween: Tween(begin: const Offset(0, 0), end: const Offset(0.5, -1)),
+            weight: 1,
+          ),
+          TweenSequenceItem(
+            tween: Tween(begin: const Offset(0.5, -1), end: const Offset(1, 0)),
+            weight: 1,
+          ),
+          TweenSequenceItem(
+            tween: Tween(begin: const Offset(1, 0), end: const Offset(0, 0)),
+            weight: 1,
+          ),
+        ]).animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: Curves.easeInOut,
+          ),
+        );
 
     // Animation for the right bottom shape
-    _rightBottomAnimation = TweenSequence([
-      TweenSequenceItem(
-        tween: Tween(begin: const Offset(0, 0), end: const Offset(-1, 0)),
-        weight: 1,
-      ),
-      TweenSequenceItem(
-        tween: Tween(begin: const Offset(-1, 0), end: const Offset(-0.5, -1)),
-        weight: 1,
-      ),
-      TweenSequenceItem(
-        tween: Tween(begin: const Offset(-0.5, -1), end: const Offset(0, 0)),
-        weight: 1,
-      ),
-    ]).animate(
-      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
-    );
+    _rightBottomAnimation =
+        TweenSequence([
+          TweenSequenceItem(
+            tween: Tween(begin: const Offset(0, 0), end: const Offset(-1, 0)),
+            weight: 1,
+          ),
+          TweenSequenceItem(
+            tween: Tween(
+              begin: const Offset(-1, 0),
+              end: const Offset(-0.5, -1),
+            ),
+            weight: 1,
+          ),
+          TweenSequenceItem(
+            tween: Tween(
+              begin: const Offset(-0.5, -1),
+              end: const Offset(0, 0),
+            ),
+            weight: 1,
+          ),
+        ]).animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: Curves.easeInOut,
+          ),
+        );
 
     _animationController.repeat();
   }
@@ -193,11 +214,11 @@ class _BallTrianglePathColoredState extends State<BallTrianglePathColored>
       animation: _animationController,
       builder: (_, child) {
         return Transform(
-          transform:
-              Matrix4.identity()..translate(
-                animation!.value.dx * (size.width - circleSize),
-                animation.value.dy * (size.height - circleSize),
-              ),
+          transform: Matrix4.translationValues(
+            animation!.value.dx * (size.width - circleSize),
+            animation.value.dy * (size.height - circleSize),
+            0.0,
+          ),
           child: child,
         );
       },

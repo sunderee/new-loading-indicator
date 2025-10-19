@@ -51,12 +51,9 @@ void main() {
       );
 
       // Get all shapes
-      final shapes =
-          tester
-              .widgetList<IndicatorShapeWidget>(
-                find.byType(IndicatorShapeWidget),
-              )
-              .toList();
+      final shapes = tester
+          .widgetList<IndicatorShapeWidget>(find.byType(IndicatorShapeWidget))
+          .toList();
 
       // Verify all shapes are circles with correct indices
       for (int i = 0; i < 5; i++) {
@@ -84,8 +81,9 @@ void main() {
       );
 
       // Get all positioned widgets
-      final positions =
-          tester.widgetList<Positioned>(find.byType(Positioned)).toList();
+      final positions = tester
+          .widgetList<Positioned>(find.byType(Positioned))
+          .toList();
 
       // Verify horizontal spacing is equal
       final lefts = positions.map((p) => p.left ?? 0.0).toList();
@@ -141,37 +139,37 @@ void main() {
       await tester.pump();
 
       // Get initial transforms
-      final initialTransforms =
-          tester.widgetList<Transform>(find.byType(Transform)).toList();
+      final initialTransforms = tester
+          .widgetList<Transform>(find.byType(Transform))
+          .toList();
 
       // Get initial values
-      final initialValues =
-          initialTransforms
-              .map(
-                (t) => {
-                  'scale': t.transform.getMaxScaleOnAxis(),
-                  'translateY': t.transform.getTranslation().y,
-                },
-              )
-              .toList();
+      final initialValues = initialTransforms
+          .map(
+            (t) => {
+              'scale': t.transform.getMaxScaleOnAxis(),
+              'translateY': t.transform.getTranslation().y,
+            },
+          )
+          .toList();
 
       // Let animations run for a short duration
       await tester.pump(const Duration(milliseconds: 100));
 
       // Get transforms after short delay
-      final shortDelayTransforms =
-          tester.widgetList<Transform>(find.byType(Transform)).toList();
+      final shortDelayTransforms = tester
+          .widgetList<Transform>(find.byType(Transform))
+          .toList();
 
       // Get values after short delay
-      final shortDelayValues =
-          shortDelayTransforms
-              .map(
-                (t) => {
-                  'scale': t.transform.getMaxScaleOnAxis(),
-                  'translateY': t.transform.getTranslation().y,
-                },
-              )
-              .toList();
+      final shortDelayValues = shortDelayTransforms
+          .map(
+            (t) => {
+              'scale': t.transform.getMaxScaleOnAxis(),
+              'translateY': t.transform.getTranslation().y,
+            },
+          )
+          .toList();
 
       // Verify that animations have started
       for (int i = 0; i < 5; i++) {
@@ -186,19 +184,19 @@ void main() {
       await tester.pump(const Duration(milliseconds: 400));
 
       // Get transforms after longer delay
-      final longerDelayTransforms =
-          tester.widgetList<Transform>(find.byType(Transform)).toList();
+      final longerDelayTransforms = tester
+          .widgetList<Transform>(find.byType(Transform))
+          .toList();
 
       // Get values after longer delay
-      final longerDelayValues =
-          longerDelayTransforms
-              .map(
-                (t) => {
-                  'scale': t.transform.getMaxScaleOnAxis(),
-                  'translateY': t.transform.getTranslation().y,
-                },
-              )
-              .toList();
+      final longerDelayValues = longerDelayTransforms
+          .map(
+            (t) => {
+              'scale': t.transform.getMaxScaleOnAxis(),
+              'translateY': t.transform.getTranslation().y,
+            },
+          )
+          .toList();
 
       // Verify scale bounds for odd and even circles
       for (int i = 0; i < 5; i++) {
@@ -246,31 +244,29 @@ void main() {
       );
 
       // Get initial values
-      final initialValues =
-          tester
-              .widgetList<Transform>(find.byType(Transform))
-              .map(
-                (t) => {
-                  'scale': t.transform.getMaxScaleOnAxis(),
-                  'translateY': t.transform.getTranslation().y,
-                },
-              )
-              .toList();
+      final initialValues = tester
+          .widgetList<Transform>(find.byType(Transform))
+          .map(
+            (t) => {
+              'scale': t.transform.getMaxScaleOnAxis(),
+              'translateY': t.transform.getTranslation().y,
+            },
+          )
+          .toList();
 
       // Let animations run
       await tester.pump(const Duration(milliseconds: 300));
 
       // Values should have changed
-      final runningValues =
-          tester
-              .widgetList<Transform>(find.byType(Transform))
-              .map(
-                (t) => {
-                  'scale': t.transform.getMaxScaleOnAxis(),
-                  'translateY': t.transform.getTranslation().y,
-                },
-              )
-              .toList();
+      final runningValues = tester
+          .widgetList<Transform>(find.byType(Transform))
+          .map(
+            (t) => {
+              'scale': t.transform.getMaxScaleOnAxis(),
+              'translateY': t.transform.getTranslation().y,
+            },
+          )
+          .toList();
       expect(runningValues, isNot(equals(initialValues)));
 
       // Update to paused state
@@ -288,31 +284,29 @@ void main() {
       );
 
       // Get values after pause
-      final pausedValues =
-          tester
-              .widgetList<Transform>(find.byType(Transform))
-              .map(
-                (t) => {
-                  'scale': t.transform.getMaxScaleOnAxis(),
-                  'translateY': t.transform.getTranslation().y,
-                },
-              )
-              .toList();
+      final pausedValues = tester
+          .widgetList<Transform>(find.byType(Transform))
+          .map(
+            (t) => {
+              'scale': t.transform.getMaxScaleOnAxis(),
+              'translateY': t.transform.getTranslation().y,
+            },
+          )
+          .toList();
 
       // Let some time pass
       await tester.pump(const Duration(milliseconds: 300));
 
       // Get values after waiting while paused
-      final stillPausedValues =
-          tester
-              .widgetList<Transform>(find.byType(Transform))
-              .map(
-                (t) => {
-                  'scale': t.transform.getMaxScaleOnAxis(),
-                  'translateY': t.transform.getTranslation().y,
-                },
-              )
-              .toList();
+      final stillPausedValues = tester
+          .widgetList<Transform>(find.byType(Transform))
+          .map(
+            (t) => {
+              'scale': t.transform.getMaxScaleOnAxis(),
+              'translateY': t.transform.getTranslation().y,
+            },
+          )
+          .toList();
 
       // Verify values haven't changed while paused
       expect(

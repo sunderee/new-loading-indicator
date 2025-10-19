@@ -56,16 +56,14 @@ void main() {
       );
 
       // Get all shapes
-      final shapes =
-          tester
-              .widgetList<IndicatorShapeWidget>(
-                find.byType(IndicatorShapeWidget),
-              )
-              .toList();
+      final shapes = tester
+          .widgetList<IndicatorShapeWidget>(find.byType(IndicatorShapeWidget))
+          .toList();
 
       // Get all opacity widgets
-      final opacities =
-          tester.widgetList<Opacity>(find.byType(Opacity)).toList();
+      final opacities = tester
+          .widgetList<Opacity>(find.byType(Opacity))
+          .toList();
 
       // Verify all shapes are circles with correct indices
       for (int i = 0; i < 3; i++) {
@@ -101,33 +99,29 @@ void main() {
       await tester.pump();
 
       // Get initial rotation and scale
-      final initialRotation =
-          tester
-              .widget<RotationTransition>(find.byType(RotationTransition))
-              .turns
-              .value;
+      final initialRotation = tester
+          .widget<RotationTransition>(find.byType(RotationTransition))
+          .turns
+          .value;
 
-      final initialScale =
-          tester
-              .widget<ScaleTransition>(find.byType(ScaleTransition))
-              .scale
-              .value;
+      final initialScale = tester
+          .widget<ScaleTransition>(find.byType(ScaleTransition))
+          .scale
+          .value;
 
       // Let animations run for a short duration
       await tester.pump(const Duration(milliseconds: 100));
 
       // Get rotation and scale after delay
-      final delayedRotation =
-          tester
-              .widget<RotationTransition>(find.byType(RotationTransition))
-              .turns
-              .value;
+      final delayedRotation = tester
+          .widget<RotationTransition>(find.byType(RotationTransition))
+          .turns
+          .value;
 
-      final delayedScale =
-          tester
-              .widget<ScaleTransition>(find.byType(ScaleTransition))
-              .scale
-              .value;
+      final delayedScale = tester
+          .widget<ScaleTransition>(find.byType(ScaleTransition))
+          .scale
+          .value;
 
       // Verify that animations have started
       expect(
@@ -146,17 +140,15 @@ void main() {
       await tester.pump(const Duration(milliseconds: 300));
 
       // Get rotation and scale after longer delay
-      final longerDelayRotation =
-          tester
-              .widget<RotationTransition>(find.byType(RotationTransition))
-              .turns
-              .value;
+      final longerDelayRotation = tester
+          .widget<RotationTransition>(find.byType(RotationTransition))
+          .turns
+          .value;
 
-      final longerDelayScale =
-          tester
-              .widget<ScaleTransition>(find.byType(ScaleTransition))
-              .scale
-              .value;
+      final longerDelayScale = tester
+          .widget<ScaleTransition>(find.byType(ScaleTransition))
+          .scale
+          .value;
 
       // Verify rotation is progressing
       expect(

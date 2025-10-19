@@ -60,12 +60,9 @@ void main() {
       );
 
       // Get all shapes
-      final shapes =
-          tester
-              .widgetList<IndicatorShapeWidget>(
-                find.byType(IndicatorShapeWidget),
-              )
-              .toList();
+      final shapes = tester
+          .widgetList<IndicatorShapeWidget>(find.byType(IndicatorShapeWidget))
+          .toList();
 
       // Verify all shapes are rectangles with correct indices
       for (int i = 0; i < 2; i++) {
@@ -98,31 +95,35 @@ void main() {
         await tester.pump();
 
         // Get initial transforms
-        final initialTransforms =
-            tester.widgetList<Transform>(find.byType(Transform)).toList();
-        final initialTranslations =
-            initialTransforms.map((t) => t.transform.getTranslation()).toList();
-        final initialRotations =
-            initialTransforms.map((t) => t.transform.getRotation()).toList();
-        final initialScales =
-            initialTransforms
-                .map((t) => t.transform.getMaxScaleOnAxis())
-                .toList();
+        final initialTransforms = tester
+            .widgetList<Transform>(find.byType(Transform))
+            .toList();
+        final initialTranslations = initialTransforms
+            .map((t) => t.transform.getTranslation())
+            .toList();
+        final initialRotations = initialTransforms
+            .map((t) => t.transform.getRotation())
+            .toList();
+        final initialScales = initialTransforms
+            .map((t) => t.transform.getMaxScaleOnAxis())
+            .toList();
 
         // Let animations run for a short duration
         await tester.pump(const Duration(milliseconds: 400));
 
         // Get transforms after delay
-        final delayedTransforms =
-            tester.widgetList<Transform>(find.byType(Transform)).toList();
-        final delayedTranslations =
-            delayedTransforms.map((t) => t.transform.getTranslation()).toList();
-        final delayedRotations =
-            delayedTransforms.map((t) => t.transform.getRotation()).toList();
-        final delayedScales =
-            delayedTransforms
-                .map((t) => t.transform.getMaxScaleOnAxis())
-                .toList();
+        final delayedTransforms = tester
+            .widgetList<Transform>(find.byType(Transform))
+            .toList();
+        final delayedTranslations = delayedTransforms
+            .map((t) => t.transform.getTranslation())
+            .toList();
+        final delayedRotations = delayedTransforms
+            .map((t) => t.transform.getRotation())
+            .toList();
+        final delayedScales = delayedTransforms
+            .map((t) => t.transform.getMaxScaleOnAxis())
+            .toList();
 
         // Verify that both squares have moved
         for (int i = 0; i < 2; i++) {
@@ -168,20 +169,18 @@ void main() {
         await tester.pump(const Duration(milliseconds: 800));
 
         // Get transforms after longer delay
-        final longerDelayTransforms =
-            tester.widgetList<Transform>(find.byType(Transform)).toList();
-        final longerDelayTranslations =
-            longerDelayTransforms
-                .map((t) => t.transform.getTranslation())
-                .toList();
-        final longerDelayRotations =
-            longerDelayTransforms
-                .map((t) => t.transform.getRotation())
-                .toList();
-        final longerDelayScales =
-            longerDelayTransforms
-                .map((t) => t.transform.getMaxScaleOnAxis())
-                .toList();
+        final longerDelayTransforms = tester
+            .widgetList<Transform>(find.byType(Transform))
+            .toList();
+        final longerDelayTranslations = longerDelayTransforms
+            .map((t) => t.transform.getTranslation())
+            .toList();
+        final longerDelayRotations = longerDelayTransforms
+            .map((t) => t.transform.getRotation())
+            .toList();
+        final longerDelayScales = longerDelayTransforms
+            .map((t) => t.transform.getMaxScaleOnAxis())
+            .toList();
 
         // Verify that positions have changed further
         for (int i = 0; i < 2; i++) {

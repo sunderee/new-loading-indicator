@@ -54,12 +54,9 @@ void main() {
       );
 
       // Get all shapes
-      final shapes =
-          tester
-              .widgetList<IndicatorShapeWidget>(
-                find.byType(IndicatorShapeWidget),
-              )
-              .toList();
+      final shapes = tester
+          .widgetList<IndicatorShapeWidget>(find.byType(IndicatorShapeWidget))
+          .toList();
 
       // Verify all shapes are lines with correct indices
       for (int i = 0; i < 4; i++) {
@@ -92,25 +89,19 @@ void main() {
       await tester.pump();
 
       // Get initial height factors
-      final initialHeightFactors =
-          tester
-              .widgetList<FractionallySizedBox>(
-                find.byType(FractionallySizedBox),
-              )
-              .map((w) => w.heightFactor)
-              .toList();
+      final initialHeightFactors = tester
+          .widgetList<FractionallySizedBox>(find.byType(FractionallySizedBox))
+          .map((w) => w.heightFactor)
+          .toList();
 
       // Let animations run for a short duration
       await tester.pump(const Duration(milliseconds: 200));
 
       // Get height factors after short delay
-      final shortDelayHeightFactors =
-          tester
-              .widgetList<FractionallySizedBox>(
-                find.byType(FractionallySizedBox),
-              )
-              .map((w) => w.heightFactor)
-              .toList();
+      final shortDelayHeightFactors = tester
+          .widgetList<FractionallySizedBox>(find.byType(FractionallySizedBox))
+          .map((w) => w.heightFactor)
+          .toList();
 
       // Verify that animations have started
       bool hasAnimationStarted = false;
@@ -131,13 +122,10 @@ void main() {
       await tester.pump(const Duration(milliseconds: 300));
 
       // Get height factors after longer delay
-      final longerDelayHeightFactors =
-          tester
-              .widgetList<FractionallySizedBox>(
-                find.byType(FractionallySizedBox),
-              )
-              .map((w) => w.heightFactor)
-              .toList();
+      final longerDelayHeightFactors = tester
+          .widgetList<FractionallySizedBox>(find.byType(FractionallySizedBox))
+          .map((w) => w.heightFactor)
+          .toList();
 
       // Verify height factor bounds
       for (final heightFactor in longerDelayHeightFactors) {

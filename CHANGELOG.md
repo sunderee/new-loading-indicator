@@ -1,3 +1,7 @@
+## 1.1.0
+
+Take care of deprecation warnings
+
 ## 1.0.2
 
 - Bump Dart and Flutter SDK constraints.

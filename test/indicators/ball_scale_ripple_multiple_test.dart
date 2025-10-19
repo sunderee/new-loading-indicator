@@ -51,12 +51,9 @@ void main() {
       );
 
       // Get all shapes
-      final shapes =
-          tester
-              .widgetList<IndicatorShapeWidget>(
-                find.byType(IndicatorShapeWidget),
-              )
-              .toList();
+      final shapes = tester
+          .widgetList<IndicatorShapeWidget>(find.byType(IndicatorShapeWidget))
+          .toList();
 
       // Verify all shapes are rings with correct indices
       for (int i = 0; i < 3; i++) {
@@ -89,33 +86,29 @@ void main() {
       await tester.pump();
 
       // Get initial scales and opacities
-      final initialScales =
-          tester
-              .widgetList<ScaleTransition>(find.byType(ScaleTransition))
-              .map((w) => w.scale.value)
-              .toList();
+      final initialScales = tester
+          .widgetList<ScaleTransition>(find.byType(ScaleTransition))
+          .map((w) => w.scale.value)
+          .toList();
 
-      final initialOpacities =
-          tester
-              .widgetList<FadeTransition>(find.byType(FadeTransition))
-              .map((w) => w.opacity.value)
-              .toList();
+      final initialOpacities = tester
+          .widgetList<FadeTransition>(find.byType(FadeTransition))
+          .map((w) => w.opacity.value)
+          .toList();
 
       // Let animations run for a short duration
       await tester.pump(const Duration(milliseconds: 200));
 
       // Get scales and opacities after short delay
-      final shortDelayScales =
-          tester
-              .widgetList<ScaleTransition>(find.byType(ScaleTransition))
-              .map((w) => w.scale.value)
-              .toList();
+      final shortDelayScales = tester
+          .widgetList<ScaleTransition>(find.byType(ScaleTransition))
+          .map((w) => w.scale.value)
+          .toList();
 
-      final shortDelayOpacities =
-          tester
-              .widgetList<FadeTransition>(find.byType(FadeTransition))
-              .map((w) => w.opacity.value)
-              .toList();
+      final shortDelayOpacities = tester
+          .widgetList<FadeTransition>(find.byType(FadeTransition))
+          .map((w) => w.opacity.value)
+          .toList();
 
       // Verify that animations have started
       bool hasAnimationStarted = false;
@@ -137,17 +130,15 @@ void main() {
       await tester.pump(const Duration(milliseconds: 600));
 
       // Get scales and opacities after longer delay
-      final longerDelayScales =
-          tester
-              .widgetList<ScaleTransition>(find.byType(ScaleTransition))
-              .map((w) => w.scale.value)
-              .toList();
+      final longerDelayScales = tester
+          .widgetList<ScaleTransition>(find.byType(ScaleTransition))
+          .map((w) => w.scale.value)
+          .toList();
 
-      final longerDelayOpacities =
-          tester
-              .widgetList<FadeTransition>(find.byType(FadeTransition))
-              .map((w) => w.opacity.value)
-              .toList();
+      final longerDelayOpacities = tester
+          .widgetList<FadeTransition>(find.byType(FadeTransition))
+          .map((w) => w.opacity.value)
+          .toList();
 
       // Verify scale bounds
       for (final scale in longerDelayScales) {
@@ -171,17 +162,15 @@ void main() {
       await tester.pump(const Duration(milliseconds: 400));
 
       // Get final scales and opacities
-      final finalScales =
-          tester
-              .widgetList<ScaleTransition>(find.byType(ScaleTransition))
-              .map((w) => w.scale.value)
-              .toList();
+      final finalScales = tester
+          .widgetList<ScaleTransition>(find.byType(ScaleTransition))
+          .map((w) => w.scale.value)
+          .toList();
 
-      final finalOpacities =
-          tester
-              .widgetList<FadeTransition>(find.byType(FadeTransition))
-              .map((w) => w.opacity.value)
-              .toList();
+      final finalOpacities = tester
+          .widgetList<FadeTransition>(find.byType(FadeTransition))
+          .map((w) => w.opacity.value)
+          .toList();
 
       // Verify that rings have different scales or opacities due to phase differences
       final uniqueStates = Set<String>.from(

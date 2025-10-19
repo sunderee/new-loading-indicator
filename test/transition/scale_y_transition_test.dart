@@ -101,7 +101,9 @@ void main() {
       final controller = AnimationController(vsync: tester, value: 1.0);
 
       await tester.pumpWidget(
-        MaterialApp(home: Center(child: ScaleYTransition(scaleY: controller))),
+        MaterialApp(
+          home: Center(child: ScaleYTransition(scaleY: controller)),
+        ),
       );
 
       expect(find.byType(Transform), findsOneWidget);

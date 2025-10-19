@@ -49,7 +49,7 @@ final class ScaleYTransition extends AnimatedWidget {
   @override
   Widget build(BuildContext context) {
     final double scaleYValue = scaleY.value;
-    final Matrix4 transform = Matrix4.identity()..scale(1.0, scaleYValue, 1.0);
+    final Matrix4 transform = Matrix4.diagonal3Values(1.0, scaleYValue, 1.0);
     return Transform(transform: transform, alignment: alignment, child: child);
   }
 }

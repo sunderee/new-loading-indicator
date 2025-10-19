@@ -53,22 +53,23 @@ class _BallZigZagState extends State<BallZigZag>
     // 1. Move up and left
     // 2. Move right while maintaining height
     // 3. Return to center
-    _animation = TweenSequence([
-      TweenSequenceItem(
-        tween: Tween(begin: const Offset(0, 0), end: const Offset(-1, -1)),
-        weight: 1,
-      ),
-      TweenSequenceItem(
-        tween: Tween(begin: const Offset(-1, -1), end: const Offset(1, -1)),
-        weight: 1,
-      ),
-      TweenSequenceItem(
-        tween: Tween(begin: const Offset(1, -1), end: const Offset(0, 0)),
-        weight: 1,
-      ),
-    ]).animate(
-      CurvedAnimation(parent: _animationController, curve: Curves.linear),
-    );
+    _animation =
+        TweenSequence([
+          TweenSequenceItem(
+            tween: Tween(begin: const Offset(0, 0), end: const Offset(-1, -1)),
+            weight: 1,
+          ),
+          TweenSequenceItem(
+            tween: Tween(begin: const Offset(-1, -1), end: const Offset(1, -1)),
+            weight: 1,
+          ),
+          TweenSequenceItem(
+            tween: Tween(begin: const Offset(1, -1), end: const Offset(0, 0)),
+            weight: 1,
+          ),
+        ]).animate(
+          CurvedAnimation(parent: _animationController, curve: Curves.linear),
+        );
 
     // Repeat the animation continuously in a forward-only direction
     _animationController.repeat();
@@ -92,11 +93,11 @@ class _BallZigZagState extends State<BallZigZag>
                 Positioned.fromRect(
                   rect: Rect.fromLTWH(deltaX, deltaY, circleSize, circleSize),
                   child: Transform(
-                    transform:
-                        Matrix4.identity()..translate(
-                          deltaX * _animation.value.dx,
-                          deltaY * _animation.value.dy,
-                        ),
+                    transform: Matrix4.translationValues(
+                      deltaX * _animation.value.dx,
+                      deltaY * _animation.value.dy,
+                      0.0,
+                    ),
                     child: const IndicatorShapeWidget(
                       shape: Shape.circle,
                       index: 0,
@@ -107,11 +108,11 @@ class _BallZigZagState extends State<BallZigZag>
                 Positioned.fromRect(
                   rect: Rect.fromLTWH(deltaX, deltaY, circleSize, circleSize),
                   child: Transform(
-                    transform:
-                        Matrix4.identity()..translate(
-                          deltaX * -_animation.value.dx,
-                          deltaY * -_animation.value.dy,
-                        ),
+                    transform: Matrix4.translationValues(
+                      deltaX * -_animation.value.dx,
+                      deltaY * -_animation.value.dy,
+                      0.0,
+                    ),
                     child: const IndicatorShapeWidget(
                       shape: Shape.circle,
                       index: 1,

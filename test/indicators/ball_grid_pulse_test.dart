@@ -51,12 +51,9 @@ void main() {
       );
 
       // Get all shapes
-      final shapes =
-          tester
-              .widgetList<IndicatorShapeWidget>(
-                find.byType(IndicatorShapeWidget),
-              )
-              .toList();
+      final shapes = tester
+          .widgetList<IndicatorShapeWidget>(find.byType(IndicatorShapeWidget))
+          .toList();
 
       // Verify all shapes are circles with correct indices
       for (int i = 0; i < 9; i++) {
@@ -119,31 +116,27 @@ void main() {
       await tester.pump();
 
       // Get initial values
-      final initialScales =
-          tester
-              .widgetList<ScaleTransition>(find.byType(ScaleTransition))
-              .map((s) => s.scale.value)
-              .toList();
-      final initialOpacities =
-          tester
-              .widgetList<FadeTransition>(find.byType(FadeTransition))
-              .map((f) => f.opacity.value)
-              .toList();
+      final initialScales = tester
+          .widgetList<ScaleTransition>(find.byType(ScaleTransition))
+          .map((s) => s.scale.value)
+          .toList();
+      final initialOpacities = tester
+          .widgetList<FadeTransition>(find.byType(FadeTransition))
+          .map((f) => f.opacity.value)
+          .toList();
 
       // Let animations run for a short duration
       await tester.pump(const Duration(milliseconds: 100));
 
       // Get values after short delay
-      final shortDelayScales =
-          tester
-              .widgetList<ScaleTransition>(find.byType(ScaleTransition))
-              .map((s) => s.scale.value)
-              .toList();
-      final shortDelayOpacities =
-          tester
-              .widgetList<FadeTransition>(find.byType(FadeTransition))
-              .map((f) => f.opacity.value)
-              .toList();
+      final shortDelayScales = tester
+          .widgetList<ScaleTransition>(find.byType(ScaleTransition))
+          .map((s) => s.scale.value)
+          .toList();
+      final shortDelayOpacities = tester
+          .widgetList<FadeTransition>(find.byType(FadeTransition))
+          .map((f) => f.opacity.value)
+          .toList();
 
       // Verify that at least one circle has started animating
       expect(
@@ -161,16 +154,14 @@ void main() {
       await tester.pump(const Duration(milliseconds: 300));
 
       // Get values after longer delay
-      final longerDelayScales =
-          tester
-              .widgetList<ScaleTransition>(find.byType(ScaleTransition))
-              .map((s) => s.scale.value)
-              .toList();
-      final longerDelayOpacities =
-          tester
-              .widgetList<FadeTransition>(find.byType(FadeTransition))
-              .map((f) => f.opacity.value)
-              .toList();
+      final longerDelayScales = tester
+          .widgetList<ScaleTransition>(find.byType(ScaleTransition))
+          .map((s) => s.scale.value)
+          .toList();
+      final longerDelayOpacities = tester
+          .widgetList<FadeTransition>(find.byType(FadeTransition))
+          .map((f) => f.opacity.value)
+          .toList();
 
       // Verify that animations are running
       expect(
@@ -232,31 +223,29 @@ void main() {
       );
 
       // Get initial values
-      final initialValues =
-          tester
-              .widgetList<ScaleTransition>(find.byType(ScaleTransition))
-              .map(
-                (s) => {
-                  'scale': s.scale.value,
-                  'opacity': (s.child as FadeTransition).opacity.value,
-                },
-              )
-              .toList();
+      final initialValues = tester
+          .widgetList<ScaleTransition>(find.byType(ScaleTransition))
+          .map(
+            (s) => {
+              'scale': s.scale.value,
+              'opacity': (s.child as FadeTransition).opacity.value,
+            },
+          )
+          .toList();
 
       // Let animations run
       await tester.pump(const Duration(milliseconds: 300));
 
       // Values should have changed
-      final runningValues =
-          tester
-              .widgetList<ScaleTransition>(find.byType(ScaleTransition))
-              .map(
-                (s) => {
-                  'scale': s.scale.value,
-                  'opacity': (s.child as FadeTransition).opacity.value,
-                },
-              )
-              .toList();
+      final runningValues = tester
+          .widgetList<ScaleTransition>(find.byType(ScaleTransition))
+          .map(
+            (s) => {
+              'scale': s.scale.value,
+              'opacity': (s.child as FadeTransition).opacity.value,
+            },
+          )
+          .toList();
       expect(runningValues, isNot(equals(initialValues)));
 
       // Update to paused state
@@ -274,31 +263,29 @@ void main() {
       );
 
       // Get values after pause
-      final pausedValues =
-          tester
-              .widgetList<ScaleTransition>(find.byType(ScaleTransition))
-              .map(
-                (s) => {
-                  'scale': s.scale.value,
-                  'opacity': (s.child as FadeTransition).opacity.value,
-                },
-              )
-              .toList();
+      final pausedValues = tester
+          .widgetList<ScaleTransition>(find.byType(ScaleTransition))
+          .map(
+            (s) => {
+              'scale': s.scale.value,
+              'opacity': (s.child as FadeTransition).opacity.value,
+            },
+          )
+          .toList();
 
       // Let some time pass
       await tester.pump(const Duration(milliseconds: 300));
 
       // Get values after waiting while paused
-      final stillPausedValues =
-          tester
-              .widgetList<ScaleTransition>(find.byType(ScaleTransition))
-              .map(
-                (s) => {
-                  'scale': s.scale.value,
-                  'opacity': (s.child as FadeTransition).opacity.value,
-                },
-              )
-              .toList();
+      final stillPausedValues = tester
+          .widgetList<ScaleTransition>(find.byType(ScaleTransition))
+          .map(
+            (s) => {
+              'scale': s.scale.value,
+              'opacity': (s.child as FadeTransition).opacity.value,
+            },
+          )
+          .toList();
 
       // Verify values haven't changed while paused
       expect(

@@ -54,15 +54,16 @@ class _PacmanState extends State<Pacman>
       vsync: this,
       duration: const Duration(milliseconds: _manDurationInMills),
     );
-    _rotateAnimation = TweenSequence([
-      TweenSequenceItem(tween: Tween(begin: pi / 4, end: 0.0), weight: 1),
-      TweenSequenceItem(tween: Tween(begin: 0.0, end: pi / 4), weight: 1),
-    ]).animate(
-      CurvedAnimation(
-        parent: _pacmanAnimationController,
-        curve: const Cubic(0.25, 0.1, 0.25, 1.0),
-      ),
-    );
+    _rotateAnimation =
+        TweenSequence([
+          TweenSequenceItem(tween: Tween(begin: pi / 4, end: 0.0), weight: 1),
+          TweenSequenceItem(tween: Tween(begin: 0.0, end: pi / 4), weight: 1),
+        ]).animate(
+          CurvedAnimation(
+            parent: _pacmanAnimationController,
+            curve: const Cubic(0.25, 0.1, 0.25, 1.0),
+          ),
+        );
 
     _pacmanAnimationController.repeat();
   }

@@ -83,12 +83,9 @@ void main() {
       );
 
       // Get all shapes
-      final shapes =
-          tester
-              .widgetList<IndicatorShapeWidget>(
-                find.byType(IndicatorShapeWidget),
-              )
-              .toList();
+      final shapes = tester
+          .widgetList<IndicatorShapeWidget>(find.byType(IndicatorShapeWidget))
+          .toList();
 
       // Verify all shapes are circles with correct indices
       for (int i = 0; i < 4; i++) {
@@ -119,21 +116,19 @@ void main() {
       await tester.pump();
 
       // Get initial states
-      final initialScales =
-          tester
-              .widgetList<ScaleTransition>(find.byType(ScaleTransition))
-              .map((w) => w.scale.value)
-              .toList();
+      final initialScales = tester
+          .widgetList<ScaleTransition>(find.byType(ScaleTransition))
+          .map((w) => w.scale.value)
+          .toList();
 
       // Let animations run for a longer duration to ensure changes are visible
       await tester.pump(const Duration(milliseconds: 500));
 
       // Get states after delay
-      final delayScales =
-          tester
-              .widgetList<ScaleTransition>(find.byType(ScaleTransition))
-              .map((w) => w.scale.value)
-              .toList();
+      final delayScales = tester
+          .widgetList<ScaleTransition>(find.byType(ScaleTransition))
+          .map((w) => w.scale.value)
+          .toList();
 
       // Verify that animations have started
       bool hasScaleAnimationStarted = false;

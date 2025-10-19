@@ -78,33 +78,29 @@ void main() {
       await tester.pump();
 
       // Get initial scale and opacity
-      final initialScale =
-          tester
-              .widget<ScaleTransition>(find.byType(ScaleTransition))
-              .scale
-              .value;
+      final initialScale = tester
+          .widget<ScaleTransition>(find.byType(ScaleTransition))
+          .scale
+          .value;
 
-      final initialOpacity =
-          tester
-              .widget<FadeTransition>(find.byType(FadeTransition))
-              .opacity
-              .value;
+      final initialOpacity = tester
+          .widget<FadeTransition>(find.byType(FadeTransition))
+          .opacity
+          .value;
 
       // Let animations run for a short duration
       await tester.pump(const Duration(milliseconds: 200));
 
       // Get scale and opacity after short delay
-      final shortDelayScale =
-          tester
-              .widget<ScaleTransition>(find.byType(ScaleTransition))
-              .scale
-              .value;
+      final shortDelayScale = tester
+          .widget<ScaleTransition>(find.byType(ScaleTransition))
+          .scale
+          .value;
 
-      final shortDelayOpacity =
-          tester
-              .widget<FadeTransition>(find.byType(FadeTransition))
-              .opacity
-              .value;
+      final shortDelayOpacity = tester
+          .widget<FadeTransition>(find.byType(FadeTransition))
+          .opacity
+          .value;
 
       // Verify that animations have started
       expect(
@@ -123,17 +119,15 @@ void main() {
       await tester.pump(const Duration(milliseconds: 500));
 
       // Get scale and opacity after longer delay
-      final longerDelayScale =
-          tester
-              .widget<ScaleTransition>(find.byType(ScaleTransition))
-              .scale
-              .value;
+      final longerDelayScale = tester
+          .widget<ScaleTransition>(find.byType(ScaleTransition))
+          .scale
+          .value;
 
-      final longerDelayOpacity =
-          tester
-              .widget<FadeTransition>(find.byType(FadeTransition))
-              .opacity
-              .value;
+      final longerDelayOpacity = tester
+          .widget<FadeTransition>(find.byType(FadeTransition))
+          .opacity
+          .value;
 
       // Verify scale bounds
       expect(
@@ -153,11 +147,10 @@ void main() {
       await tester.pump(const Duration(milliseconds: 200));
 
       // Get final scale
-      final finalScale =
-          tester
-              .widget<ScaleTransition>(find.byType(ScaleTransition))
-              .scale
-              .value;
+      final finalScale = tester
+          .widget<ScaleTransition>(find.byType(ScaleTransition))
+          .scale
+          .value;
 
       // Verify scale is maintained at 1.0 during the hold period
       expect(
